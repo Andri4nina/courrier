@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger("postes_id");
             $table->foreign('postes_id')->references('id')->on('postes')->onDelete('cascade');
+            $table->boolean('role')->default(false);
         });
     }
 
