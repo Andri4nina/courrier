@@ -1,3 +1,9 @@
+@import "boxicons/css/boxicons.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}

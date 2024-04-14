@@ -21,8 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'postes_id',
     ];
 
+
+    public function poste()
+    {
+        return $this->belongsTo(Poste::class, 'postes_id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
