@@ -12,5 +12,15 @@ class AuthController extends Controller
       {
           return view('login.login');
       }
+       // Effectue le login
+       public function dologin()
+       {
+           return view('pages.menu');
+       }
+
+       public function toMenu()
+       {
+           return view('pages.menu');
+       }
 
 }
