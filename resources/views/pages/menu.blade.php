@@ -1,8 +1,6 @@
 @extends('welcome')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
-@endpush
+
 
 
 @section("content")
@@ -10,15 +8,15 @@
 <div class="w-full max-h-screen h-screen relative flex justify-center items-center">
     <div class=" gap-12 flex justify-center items-start">
         <div>
-            <div class="w-full grid grid-cols-2 gap-2 min-h-44 dashboard">
+            <div class="w-full grid grid-cols-2 gap-2 mb-2 dashboard">
                 <div class="w-full h-full">
-                    <h3 class="text-white">Envoye</h3>
+
                     <div class="h-36 bg-red-500 w-full">
 
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-white">Recu</h3>
+
                     <div class="h-36 bg-red-500 w-full">
 
                     </div>
@@ -27,34 +25,69 @@
 
             <div class="flex gap-2">
                 <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-red-600 shadow-md hover:bg-red-700 hover:shadow  text-white flex justify-center items-center w-36 h-36 cursor-pointer">
-                        + Nouvelle Colis
+                    <div class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                       <a href="#" class="relative w-full h-full flex justify-center items-center">
+
+                       <div class="text-7xl absolute -bottom-5 text-slate-400 -right-3  group-hover:text-blue-500"><i class="bx bx-plus "></i></div>
+                       <div class="z-10 font-medium"> + Nouvelle Colis </div>
+                       </a>
                     </div>
-                    <div class="bg-green-600 shadow-md hover:bg-green-700 hover:shadow text-white flex justify-center items-center w-36 h-36 cursor-pointer">
-                        Archive
-                    </div>
-                    <div class="bg-blue-600 shadow-md hover:bg-blue-700 hover:shadow text-white text-center flex justify-center items-center w-36 h-36 cursor-pointer">
-                        Liste de colis <br> envoyer
-                    </div>
-                    <div class="bg-yellow-600 shadow-md hover:bg-yellow-700 hover:shadow text-white text-center flex justify-center items-center w-36 h-36 cursor-pointer">
-                        Liste de colis <br> Recu
-                    </div>
+                    <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href="#" class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"><i class="bx bx-archive-in"></i></div>
+                        <div class="z-10">Archive</div>
+                        </a>
+                     </div>
+                     <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href="#" class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1 group-hover:text-green-500"><i class="bx bxs-truck"></i></div>
+                        <div class="z-10 text-center">Liste de colis <br> envoyer</div>
+                        </a>
+                     </div>
+                     <div class="overflow-hidden relative bg-yellow-600  hover:bg-yellow-400 hover:shadow-yellow-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href="#" class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-yellow-500"><i class="bx bx-check"></i></div>
+                        <div class="z-10 text-center">Liste de colis <br> recu</div>
+                        </a>
+                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div class="flex justify-center items-center w-36 h-36">
 
                     </div>
-                    <div class="bg-purple-600 shadow-md hover:bg-purple-700 hover:shadow text-white flex justify-center items-center w-36 h-36 cursor-pointer" >
-                        Nos Client
-                    </div>
+                    <div class="overflow-hidden relative bg-purple-600  hover:bg-purple-400 hover:shadow-purple-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href="#" class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-purple-500"><i class="bx bx-group"></i></div>
+                        <div class="z-10 text-center">Nos Clients</div>
+                        </a>
+                     </div>
+                     <div class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href={{  route('poste.index') }} class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-blue-500"><i class="bx bxs-building-house"></i></div>
+                        <div class="z-10 text-center">Les Postes</div>
+                        </a>
+                     </div>
+                     <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                        <a href="#" class="relative w-full h-full flex justify-center items-center">
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"><i class="bx bx-user"></i></div>
+                        <div class="z-10 text-center">Utilisateurs</div>
+                        </a>
+                     </div>
                 </div>
             </div>
         </div>
+
         <div class="relative h-full">
-            <h2 class="text-white">Horloge</h2>
             <div class="grid grid-cols-1 gap-2">
-                <div class="bg-green-800 text-white flex justify-center items-center w-36 h-36">
-                    clock
+                <div class=" text-white flex justify-center items-center w-36 h-36">
+                    <div class="clock ">
+                        <div class="wrap">
+                          <span class="hour"></span>
+                          <span class="minute"></span>
+                          <span class="second"></span>
+                          <span class="dot"></span>
+                        </div>
+                      </div>
                 </div>
                 <div class="bg-yellow-800 text-white flex justify-center items-center w-36 h-36">
                     Date
@@ -70,19 +103,26 @@
                         </div>
                 </div>
             </div>
-
-
-
         </div>
 
     </div>
 
     <div class="absolute top-0 left-0 w-full h-auto">
         <div class="flex justify-between px-16 pt-5 items-center">
-            <div class="bg-red-500 h-16 w-16  Logo">
+            <div class=" h-16 w-16  Logo">
+                <a href="#">
+                    <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
+                        <div class=" h-16 w-16  border rotate-45  Logo ">
+                            <img src="{{ asset('images/Postman.png')}}" alt="LogoPosteman" class="-rotate-45 w-full h-full object-fill">
+                        </div>
+                        <div class="text-white text-3xl font-semibold">
+                            PosteMan
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="text-white user">
-                Andrianina
+            <div class="text-white flex justify-center items-center gap-2">
+               <span class="font-semibold">Andrianina</span> <i class="text-xl bx bx-user"></i>
             </div>
         </div>
 

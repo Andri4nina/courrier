@@ -7,17 +7,17 @@
             <input type="text" placeholder="Lieux" class="bg-transparent outline-none text-white">
         </div>
     </div>
-
-    <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
-        <div class=" h-20 border rotate-45 w-20  Logo ">
-            <img src="{{ asset('images/Postman.png')}}" alt="LogoPostmann" class="-rotate-45 w-full h-full object-fill">
+    
+    <a href="#">
+        <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
+            <div class=" h-16 w-16  border rotate-45  Logo ">
+                <img src="{{ asset('images/Postman.png')}}" alt="LogoPosteman" class="-rotate-45 w-full h-full object-fill">
+            </div>
+            <div class="text-white text-3xl font-semibold">
+                PosteMan
+            </div>
         </div>
-        <div class="text-white text-3xl font-semibold">
-            PostMan
-        </div>
-    </div>
-
-
+    </a>
 
     <div class="absolute bottom-5 right-5 grid grid-cols-2 gap-2">
         <button class="bg-cyan-600 hover:bg-cyan-400 hover:shadow-cyan-700 hover:shadow-lg rounded-sm p-2 h-10 w-10 transition-all"><i class="text-white bx bx-info-circle"></i></button>
@@ -26,7 +26,7 @@
 
 
     <div class="w-60 text-center" >
-    <form action="">
+    <form action="{{  route('auth.dologin') }}" method="post" >
         @csrf
         @if ($errors->any())
                 <script type="text/javascript">
