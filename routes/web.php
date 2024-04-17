@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
-Route::get('/Menu', [AuthController::class, 'doLogin'])->name('auth.dologin');
+Route::post('/Menu', [AuthController::class, 'doLogin'])->name('auth.dologin');
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
 
 
@@ -27,4 +27,15 @@ Route::prefix('poste')->group(function () {
     Route::post('/store', [PosteController::class, 'store'])->name('poste.store');
     Route::post('/', [PosteController::class, 'update'])->name('poste.update');
     Route::delete('/{id}', [PosteController::class, 'destroy'])->name('poste.destroy');
+});
+
+
+/* route pour user */
+Route::prefix('user')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('user.index');
+    Route::get('/creation', [UserController::class, 'create'])->name('user.create');
+    Route::get('/mod{id}fication', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('/store', [UserController::class, 'store'])->name('user.store');
+    Route::post('/', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });

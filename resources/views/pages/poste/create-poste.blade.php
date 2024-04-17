@@ -95,5 +95,6 @@
 
             </form>
         </div>
+        {{ view('pages.layouts.header') }}
     </div>
 @endsection

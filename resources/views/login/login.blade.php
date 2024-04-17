@@ -7,7 +7,7 @@
             <input type="text" placeholder="Lieux" class="bg-transparent outline-none text-white">
         </div>
     </div>
-    
+
     <a href="#">
         <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
             <div class=" h-16 w-16  border rotate-45  Logo ">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="w-60 text-center" >
-    <form action="{{  route('auth.dologin') }}" method="post" >
+    <form action={{ route('auth.dologin') }}  method="post" >
         @csrf
         @if ($errors->any())
                 <script type="text/javascript">
