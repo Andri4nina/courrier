@@ -24,7 +24,6 @@
         <button class="bg-red-800 hover:bg-red-600 hover:shadow-red-700 hover:shadow-lg rounded-sm p-2 h-10 w-10 transition-all"><i class="text-white bx bx-power-off"></i></button>
     </div>
 
-
     <div class="w-60 text-center" >
     <form action="{{  route('auth.dologin') }}" method="post" >
         @csrf
