@@ -6,7 +6,12 @@ export default {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                comfortaa: "Comfortaa",
+                lilita: "Lilita One",
+            },
+        },
     },
     plugins: [],
 };

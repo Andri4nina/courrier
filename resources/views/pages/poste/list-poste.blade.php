@@ -1,9 +1,10 @@
 @extends('welcome')
 
 @section('content')
-    <div class="relative w-10/12 mx-auto max-h-screen h-screen flex justify-center mt-40">
+    {{ view('pages.layouts.headers') }}
+    <div class="relative w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
-            <h3 class="text-white text-3xl font-semibold  flex items-center">
+            <h3 class="text-white text-xl font-semibold  flex items-center">
                 <a href={{ route('auth.toMenu') }} class="flex justify-center items-center"><i
                         class="bx bx-chevron-left"></i></a>
                 <p>Postes</p>
@@ -39,7 +40,7 @@
                         <div class=" flex justify-end ">
                             <form action="{{ route('poste.create') }}">
                                 <button
-                                    class="mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all "><span>Nouvelle
+                                    class="text-sm font-bold mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all "><span>Nouvelle
                                         poste +</span></button>
                             </form>
                         </div>
@@ -47,7 +48,7 @@
                         <form action="{{ route('poste.index') }}">
                             <div class="flex justify-center items-center relative">
                                 <button
-                                    class=" w-2/12 bg-blue-800 h-auto  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all ">
+                                    class="text-sm font-bold w-2/12 bg-blue-800 h-auto  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all ">
                                     <span>Rechercher</span>
                                 </button>
                                 <div class="w-10/12 inputfield px-4 py-2 my-5 border-b-2">
@@ -140,5 +141,4 @@
 
 
     </div>
-    {{ view('pages.layouts.header') }}
 @endsection

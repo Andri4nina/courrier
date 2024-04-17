@@ -28,25 +28,25 @@
                     <div class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                        <a href="#" class="relative w-full h-full flex justify-center items-center">
 
-                       <div class="text-7xl absolute -bottom-5 text-slate-400 -right-3  group-hover:text-blue-500"></div>
+                       <div class="text-7xl absolute -bottom-5 text-slate-400 -right-3  group-hover:text-blue-500"><i class="bx bx-plus "></i></div>
                        <div class="z-10 font-medium"> + Nouvelle Colis </div>
                        </a>
                     </div>
                     <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href="#" class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"><i class="bx bx-archive-in"></i></div>
                         <div class="z-10">Archive</div>
                         </a>
                      </div>
                      <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href="#" class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1 group-hover:text-green-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1 group-hover:text-green-500"><i class="bx bxs-truck"></i></div>
                         <div class="z-10 text-center">Liste de colis <br> envoyer</div>
                         </a>
                      </div>
                      <div class="overflow-hidden relative bg-yellow-600  hover:bg-yellow-400 hover:shadow-yellow-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href="#" class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-yellow-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-yellow-500"><i class="bx bx-check"></i></div>
                         <div class="z-10 text-center">Liste de colis <br> recu</div>
                         </a>
                      </div>
@@ -57,19 +57,19 @@
                     </div>
                     <div class="overflow-hidden relative bg-purple-600  hover:bg-purple-400 hover:shadow-purple-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href="#" class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-purple-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-purple-500"><i class="bx bx-group"></i></div>
                         <div class="z-10 text-center">Nos Clients</div>
                         </a>
                      </div>
                      <div class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href={{  route('poste.index') }} class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-blue-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-blue-500"><i class="bx bxs-building-house"></i></div>
                         <div class="z-10 text-center">Les Postes</div>
                         </a>
                      </div>
                      <div class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
                         <a href="#" class="relative w-full h-full flex justify-center items-center">
-                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"></div>
+                        <div class="text-7xl absolute -bottom-4 text-slate-400 -right-1  group-hover:text-green-500"><i class="bx bx-user"></i></div>
                         <div class="z-10 text-center">Utilisateurs</div>
                         </a>
                      </div>
@@ -107,9 +107,28 @@
 
     </div>
 
-    {{ view('pages.layouts.header') }}
+    <div class="absolute top-0 left-0 w-full h-auto">
+        <div class="flex justify-between px-16 pt-5 items-center">
+            <div class=" h-16 w-16  Logo">
+                <a href="#">
+                    <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
+                        <div class=" h-16 w-16  border rotate-45  Logo ">
+                            <img src="{{ asset('images/Postman.png')}}" alt="LogoPosteman" class="-rotate-45 w-full h-full object-fill">
+                        </div>
+                        <div class="text-white text-3xl font-semibold">
+                            PosteMan
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="text-white flex justify-center items-center gap-2">
+               <span class="font-semibold">Andrianina</span> <i class="text-xl bx bx-user"></i>
+            </div>
+        </div>
 
 
+
+    </div>
 
 </div>
 @endsection

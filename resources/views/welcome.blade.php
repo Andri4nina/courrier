@@ -8,7 +8,7 @@
 
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-slate-900 overflow-hidden">
+    <body class="bg-slate-900">
     <section class="w-full  min-h-screen">
         @yield('content')
     </section>

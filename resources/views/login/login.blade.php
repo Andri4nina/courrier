@@ -1,29 +1,31 @@
 @extends('welcome')
 
 @section("content")
-<div class="max-h-screen h-screen w-full relative flex justify-center items-center">
-    <div class="absolute top-5 right-5 ">
-        <div class="inputfield px-4 py-1 border-b-2">
-            <input type="text" placeholder="Lieux" class="bg-transparent outline-none text-white">
-        </div>
-    </div>
-
+<div class="flex m-5 items-center justify-between">
     <a href="#">
-        <div class="absolute top-5 left-5 flex justify-center gap-5 items-center">
-            <div class=" h-16 w-16  border rotate-45  Logo ">
+        <div class="top-5 left-5 flex justify-center gap-5 items-center">
+            <div class="h-24 w-24 rotate-45  Logo ">
                 <img src="{{ asset('images/Postman.png')}}" alt="LogoPosteman" class="-rotate-45 w-full h-full object-fill">
             </div>
-            <div class="text-white text-3xl font-semibold">
+            <div class="text-white text-3xl font-lilita font-semibold">
                 PosteMan
             </div>
         </div>
     </a>
-
-    <div class="absolute bottom-5 right-5 grid grid-cols-2 gap-2">
-        <button class="bg-cyan-600 hover:bg-cyan-400 hover:shadow-cyan-700 hover:shadow-lg rounded-sm p-2 h-10 w-10 transition-all"><i class="text-white bx bx-info-circle"></i></button>
+    <div>
+        <label class="text-white text-sm" for="">Lieu :</label>
+        <br>
+        <select name="" id="" class="py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
+            <option value="">Fianarantsoa</option>
+            <option value="">Antananarivo</option>
+            <option value="">Majunga</option>
+        </select>
+    </div>
+</div>
+<div class="max-h-screen h-screen w-full relative flex justify-center mt-8">
+    <div class="absolute top-[380px] right-5 grid grid-cols-2 gap-2">
         <button class="bg-red-800 hover:bg-red-600 hover:shadow-red-700 hover:shadow-lg rounded-sm p-2 h-10 w-10 transition-all"><i class="text-white bx bx-power-off"></i></button>
     </div>
-
     <div class="w-60 text-center" >
     <form action={{ route('auth.dologin') }}  method="post" >
         @csrf
@@ -49,18 +51,18 @@
 
                 @endif
         <i class="bx bx-user-circle text-center text-9xl text-white"></i>
-        <div class="inputfield px-4 py-1 my-5 border-b-2">
-            <input type="text" placeholder="Nom Utilisateur" class="bg-transparent outline-none text-white">
+        <div class="inputfield py-1 my-5 border-b-2">
+            <input type="text" placeholder="Nom Utilisateur" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
-        <div class="inputfield px-4 py-1 my-5 border-b-2">
-            <input type="text" placeholder="Email" class="bg-transparent outline-none text-white">
+        <div class="inputfield py-1 my-5 border-b-2">
+            <input type="text" placeholder="Email" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
-        <div class="inputfield px-4 py-1 my-5 border-b-2">
-            <input type="password" placeholder="Mot de passe" class="bg-transparent outline-none text-white">
+        <div class="inputfield py-1 my-5 border-b-2">
+            <input type="password" placeholder="Mot de passe" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
 
         <input type="hidden" name="post_localisation">
-        <button class="mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all">
+        <button class="font-bold text-sm mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all">
             Se Connecter
         </button>
 
