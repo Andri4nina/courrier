@@ -1,6 +1,7 @@
 @extends('welcome')
 
 @section('content')
+{{ view('pages.layouts.headers') }}
     <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center mt-40">
         <div class=" w-full">
             <h3 class="text-white text-3xl font-semibold  flex items-center">
@@ -99,6 +100,6 @@
                 </div>
             </form>
         </div>
-        {{ view('pages.layouts.header') }}
+        
     </div>
 @endsection

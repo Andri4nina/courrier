@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourrierController;
+use App\Http\Controllers\KimController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
 
@@ -22,7 +23,7 @@ Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
 Route::get('/createCour', [CourrierController::class, "create"]);
 
 /* route pour postes */
-Route::middleware(['auth'])->prefix('poste')->group(function () {
+Route::prefix('poste')->group(function () {
     Route::get('/', [PosteController::class, 'index'])->name('poste.index');
     Route::get('/creation', [PosteController::class, 'create'])->name('poste.create');
     Route::get('/modification/{id}', [PosteController::class, 'edit'])->name('poste.edit');
@@ -32,7 +33,7 @@ Route::middleware(['auth'])->prefix('poste')->group(function () {
 });
 
 /* route pour user */
-Route::middleware(['auth'])->prefix('user')->group(function () {
+Route::prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::get('/creation', [UserController::class, 'create'])->name('user.create');
     Route::get('/modification/{id}', [UserController::class, 'edit'])->name('user.edit');
@@ -40,5 +41,3 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::post('/', [UserController::class, 'update'])->name('user.update');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
-
-

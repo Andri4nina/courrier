@@ -60,7 +60,7 @@
             <input name="email" type="text" placeholder="Email" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
         <div class="inputfield py-1 my-5 border-b-2">
-            <input name="mdp" type="password" placeholder="Mot de passe" class="text-sm w-full bg-transparent outline-none text-white">
+            <input name="password" type="password" placeholder="Mot de passe" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
 
         <input type="hidden" id="poste_id" name="poste_id" >

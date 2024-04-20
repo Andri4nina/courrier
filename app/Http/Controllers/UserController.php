@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poste;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,55 +13,58 @@ class UserController extends Controller
         $keyword = $request->get('search');
         $perPage = 10;
         if (!empty($keyword)) {
-            $poste = Poste::select('postes.id', 'postes.region', 'postes.adresse', 'postes.bp', 'postes.email', 'postes.tel')
-                ->where("postes.region", "LIKE", "%$keyword%")
-                ->orWhere("postes.adresse", "LIKE", "%$keyword%")
-                ->orderBy('postes.id', 'desc')
+            $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
+                ->where("users.name", "LIKE", "%$keyword%")
+                ->orWhere("users.email", "LIKE", "%$keyword%")
+                ->orderBy('users.id', 'desc')
                 ->paginate($perPage);
         } else {
-            $poste = Poste::select('postes.id', 'postes.region', 'postes.adresse', 'postes.bp', 'postes.email', 'postes.tel')
+            $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
                 ->paginate($perPage);
         }
 
-        return view('pages.poste.list-poste', compact('poste'))
+        return view('pages.user.list-user', compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * $perPage);
     }
 
     /* navigation dans les formulaires  */
     public function create()
     {
-        return view('pages.poste.create-poste');
+        $postes = Poste::select('id', 'region', 'adresse','bp')->get();
+        return view('pages.user.create-user', compact('postes'));
     }
+
 
     public function edit($id)
     {
-        $poste = Poste::findOrfail($id);
-        return view('pages.poste.update-poste', ['poste' => $poste]);
+        $user = User::findOrFail($id);
+        $postes = Poste::select('id', 'region', 'adresse','bp')->get();
+        return view('pages.user.update-user', ['user' => $user, 'postes' => $postes]);
     }
-
     /* ----fin----- */
     /* fonction de creation */
     public function store(Request $request)
     {
         $request->validate([
-            'region' => 'required',
-            'bp' => 'required',
-            'adresse' => 'required',
-            'email' => 'required',
-            'tel' => 'required'
+            'name' => 'required',
+            'Email' => 'required',
+            'mdp' => 'required',
+            'poste_id' => 'required'
         ]);
 
-        $postes = new Poste();
+        $users = new User();
 
-        $postes->region = $request->input('region');
-        $postes->adresse = $request->input('adresse');
-        $postes->bp = $request->input('bp');
-        $postes->email = $request->input('email');
-        $postes->tel = $request->input('tel');
+        $users->name = $request->input('name');
+        $users->email = $request->input('Email');
+        $users->password = $request->input('mdp');
+        $users->postes_id = $request->input('poste_id');
 
-        $postes->save();
 
-        return redirect()->route('poste.index')->with('success', 'postes créé avec succès');
+        $users->save();
+
+        return redirect()->route('user.index')->with('success', 'Utilisateur créé avec succès');
     }
 
     /* Fonction de mise a jour */
@@ -68,30 +72,28 @@ class UserController extends Controller
     {
 
         $request->validate([
-            'region' => 'required',
-            'bp' => 'required',
-            'adresse' => 'required',
-            'email' => 'required',
-            'tel' => 'required'
+            'name' => 'required',
+            'Email' => 'required',
+            'mdp' => 'required',
+            'poste_id' => 'required'
         ]);
 
-        $postes = Poste::find($request->hidden_id);
+        $users = User::find($request->hidden_id);
 
-        $postes->region = $request->input('region');
-        $postes->adresse = $request->input('adresse');
-        $postes->bp = $request->input('bp');
-        $postes->email = $request->input('email');
-        $postes->tel = $request->input('tel');
+        $users->name = $request->input('name');
+        $users->email = $request->input('Email');
+        $users->password = $request->input('mdp');
+        $users->postes_id = $request->input('poste_id');
 
-        $postes->save();
+        $users->save();
 
-        return redirect()->route('poste.index')->with('success', 'Poste modifier avec succès');
+        return redirect()->route('user.index')->with('success', 'Utilisateur modifier avec succès');
     }
 
     public function destroy(Request $request, $id){
-        $poste= Poste::findOrFail($id);
+        $user= user::findOrFail($id);
 
-        $poste->delete();
-        return redirect('poste')->with('success','Poste supprimer!');
+        $user->delete();
+        return redirect('user')->with('success','Utilisateur supprimer!');
     }
 }

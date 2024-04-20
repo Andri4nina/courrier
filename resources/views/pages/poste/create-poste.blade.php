@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-    {{ view('pages.layouts.headers') }}
+{{ view('pages.layouts.headers') }}
     <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
             <h3 class="text-white text-xl font-semibold  flex items-center">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 my-10 gap-5 w-fit mx-auto  ">
-                    
+
                     <button
                         class="text-sm text-white btn-skin2  bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-sm ">Enregistrer</button>
                     <button

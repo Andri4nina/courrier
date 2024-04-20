@@ -17,23 +17,24 @@ class AuthController extends Controller
             return view('login.login', ["postes" => $postes]);
         }
        // Effectue le login
+       public function doLogin()
+       {
+           // Récupère les données validées du formulaire de connexion
+        //    $authCredentials = $request->validated();
+           // Tente de connecter l'utilisateur avec les informations fournies
+        //    if (Auth::attempt($authCredentials)) {
+          // Régénère la session pour des raisons de sécurité
+            //    $request->session()->regenerate();
+            //    Redirige vers la page de tableau de bord après la connexion réussie
 
-    // Processus de connexion
-    public function doLogin(LoginRequest $request)
-    {
-        $authCredentials = $request->validated();
-        if (Auth::attempt($authCredentials)) {
-            $request->session()->regenerate();
-
-            $user = Auth::user();
-
-            return redirect()->route("auth.toMenu");
-        }
-
-        return redirect()->route('auth.login')->withErrors([
-            'email' => 'Invalide',
-        ]);
-    }
+        //    }
+            // Redirige vers la page de connexion avec une erreur en cas d'échec de connexion
+/*            return redirect()->route('auth.login')->withErrors([
+               'email' => 'Invalide',
+           ]);
+ */
+           return redirect()->route("auth.toMenu");
+       }
 
        public function toMenu()
        {
