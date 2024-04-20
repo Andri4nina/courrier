@@ -2,9 +2,9 @@
 
 @section('content')
 {{ view('pages.layouts.headers') }}
-    <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center mt-40">
+    <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
-            <h3 class="text-white text-3xl font-semibold  flex items-center">
+            <h3 class="text-white text-xl font-semibold  flex items-center">
                 <a href={{ route('poste.index') }} class="flex justify-center items-center"><i
                         class="bx bx-chevron-left"></i></a>
                 <p>Postes / <small>Modification</small></p>
@@ -93,13 +93,13 @@
                 </div>
                 <div class="grid grid-cols-2 my-10 gap-5 w-fit mx-auto  ">
                     <button
-                        class="text-white btn-skin2  bg-green-500  hover:bg-green-600 hover:shadow-green-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
+                        class="text-white btn-skin2  bg-blue-500  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
                     <button
                         class="  text-slate-200  bg-slate-800  hover:bg-slate-600 hover:shadow-slate-700 hover:shadow-lg px-4 py-2 rounded-md "
                         type="reset">Annuler</button>
                 </div>
             </form>
         </div>
-        
+
     </div>
 @endsection

@@ -34,7 +34,11 @@
 
             <div class="bounceslideInFromRight p-5 min-w-4xl crud-card">
                 <div class="top-card">
-                    <h4 class="text-white my-5">Tous les Postes</h4>
+                    <div class=" text-white font-bold items-center flex gap-2">
+                        <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                        <h4 class="text-white my-5">Tous les Postes</h4>
+                    </div>
+
                     <hr>
                     <div class="  w-full">
                         <div class=" flex justify-end ">
