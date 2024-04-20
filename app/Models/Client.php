@@ -16,7 +16,8 @@ class Client extends Model
         "adresse",
         "tel",
         "email",
-        "cin"
+        "cin",
+        "province"
     ];
 
 }

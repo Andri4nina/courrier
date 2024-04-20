@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('adresse')->unique();
             $table->string('tel')->unique();
             $table->string('email')->unique();
+            $table -> string("province");
             $table->string('cin')->unique();
             $table->timestamps();
         });
