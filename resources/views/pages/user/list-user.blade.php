@@ -34,7 +34,11 @@
 
             <div class="bounceslideInFromRight p-5 min-w-4xl crud-card">
                 <div class="top-card">
-                    <h4 class="text-white my-5">Tous les Utilisateurs</h4>
+                    <div class=" text-white font-bold items-center flex gap-2">
+                        <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                        <h4 class="text-white my-5">Tous les Utilisateurs</h4>
+                    </div>
+
                     <hr>
                     <div class="  w-full">
                         <div class=" flex justify-end ">
@@ -53,7 +57,7 @@
                                 </button>
                                 <div class="w-10/12 inputfield px-4 py-2 my-5 border-b-2">
                                     <input type="text" placeholder="Chercher un utilisateur" name="search"
-                                        class="bg-transparent outline-none text-white" >
+                                        class="w-full bg-transparent outline-none text-white" >
                                 </div>
                                 <button class="absolute right-2 text-white">
                                     <i class="bx bx-search"></i>
@@ -138,5 +142,24 @@
 
 
     </div>
-
+    <script type="text/javascript">
+        window.deleteConfirm = function(e) {
+            e.preventDefault();
+            var form = e.target.form;
+            Swal.fire({
+                    title: 'Etes vous sur de vouloir supprimer cet utilisateur ?',
+                    text: "Vous ne pouvez plus retourner en arriere!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1F9B4F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, supprimer!',
+                    cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                form.submit();
+                }
+            })
+        }
+    </script>
 @endsection

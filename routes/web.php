@@ -18,12 +18,15 @@ use App\Http\Controllers\PosteController;
 |
 */
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
-Route::post('/Menu', [AuthController::class, 'doLogin'])->name('auth.dologin');
+Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
+Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
 Route::get('/createCour', [CourrierController::class, "create"]);
 
 /* route pour postes */
-Route::prefix('poste')->group(function () {
+Route::prefix('poste')->middleware('auth')->group(function () {
     Route::get('/', [PosteController::class, 'index'])->name('poste.index');
     Route::get('/creation', [PosteController::class, 'create'])->name('poste.create');
     Route::get('/modification/{id}', [PosteController::class, 'edit'])->name('poste.edit');
@@ -33,7 +36,7 @@ Route::prefix('poste')->group(function () {
 });
 
 /* route pour user */
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::get('/creation', [UserController::class, 'create'])->name('user.create');
     Route::get('/modification/{id}', [UserController::class, 'edit'])->name('user.edit');

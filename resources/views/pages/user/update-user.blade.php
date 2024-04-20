@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-{{ view('pages.layouts.headers') }}
+    {{ view('pages.layouts.headers') }}
     <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
             <h3 class="text-white text-xl font-semibold  flex items-center">
@@ -10,7 +10,7 @@
                 <p>Utilisateurs / <small>Modification</small></p>
             </h3>
             <div class="grid grid-cols-2">
-                <form action="{{ route('user.update') }}" method="POST" class="w-full mt-20 max-w-4xl">
+                <form action="{{ route('user.update') }}" method="POST" class="w-full mt-10 max-w-4xl">
                     @csrf
                     @if ($errors->any())
                         <script type="text/javascript">
@@ -33,6 +33,11 @@
                         </script>
                     @endif
                     <div class="w-11/12 mx-auto grid grid-cols-1 gap-2">
+                        <div class=" text-white font-bold items-center flex gap-2 mb-5">
+                            <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                            <h2 class="text-white text-base">Information de l'utilisateur</h2>
+
+                        </div>
                         <div class="">
                             <div
                                 class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
@@ -40,8 +45,9 @@
                                     Nom utilisateur
                                 </div>
                                 <div class="w-2/3">
-                                    <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name='name' value={{ $user->name }}>
+                                    <input type="text"
+                                        class="w-full text-left bg-transparent pr-3 outline-none text-white" name='name'
+                                        value={{ $user->name }}>
                                 </div>
                             </div>
                             <div
@@ -50,8 +56,9 @@
                                     Email
                                 </div>
                                 <div class="w-2/3">
-                                    <input type="text" class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name='Email' value={{ $user->email }}>
+                                    <input type="text"
+                                        class=" w-full text-left bg-transparent pr-3 outline-none text-white" name='Email'
+                                        value={{ $user->email }}>
                                 </div>
                             </div>
                             <div
@@ -60,8 +67,9 @@
                                     Mot de passe
                                 </div>
                                 <div class="w-2/3">
-                                    <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="mdp" value={{ $user->password }}>
+                                    <input type="text"
+                                        class="w-full text-left bg-transparent pr-3 outline-none text-white" name="mdp"
+                                        value="{{ password_hash($user->password, PASSWORD_DEFAULT) }}">
                                 </div>
                             </div>
 
@@ -71,7 +79,7 @@
                         <input type="hidden" name="poste_id" value={{ $user->postes_id }} />
                         <input type="hidden" name="hidden_id" value={{ $user->id }} />
                         <button
-                            class="text-white btn-skin2  bg-green-500  hover:bg-green-600 hover:shadow-green-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
+                            class="text-white btn-skin2  bg-blue-500  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
                         <button
                             class="  text-slate-200  bg-slate-800  hover:bg-slate-600 hover:shadow-slate-700 hover:shadow-lg px-4 py-2 rounded-md "
                             type="reset">Annuler</button>
@@ -80,8 +88,12 @@
                 </form>
 
 
-                <div>
-                <h2 class="text-white text-2xl">Veuillez Selectionner la zone ou l'utilisateur travail</h2>
+                <div class="mt-10">
+                    <div class=" text-white font-bold items-center flex gap-2">
+                        <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                        <h2 class="text-white text-base">Veuillez Selectionner la zone ou l'utilisateur travail</h2>
+
+                    </div>
                     <table class=" text-center min-w-full">
                         <thead class="text-white border-b-4">
                             <tr>
@@ -93,7 +105,7 @@
                         <div class="relative overflow-hidden">
                             <tbody class=" pt-5 text-white overflow-y-scroll">
                                 @foreach ($postes as $poste)
-                                    <tr class="cursor-pointer hover:bg-slate-300 hover:text-slate-600  border-b">
+                                    <tr class="cursor-pointer hover:bg-slate-800 hover:text-slate-50  border-b">
                                         <td class="px-4 py-2" data-poste-id="{{ $poste->id }}">
                                             {{ $poste->region }}
                                         </td>
@@ -127,9 +139,9 @@
             rows.forEach(row => {
                 row.addEventListener('click', () => {
                     rows.forEach(r => {
-                        r.classList.remove('bg-green-500', 'text-white');
+                        r.classList.remove('bg-blue-500', 'text-white');
                     });
-                    row.classList.add('bg-green-500', 'text-white');
+                    row.classList.add('bg-blue-500', 'text-white');
                     const posteId = row.querySelector('td').dataset.posteId;
                     document.querySelector('input[name="poste_id"]').value = posteId;
                 });
@@ -139,10 +151,8 @@
             const selectedRow = document.querySelector(`td[data-poste-id="${posteId}"]`);
             if (selectedRow) {
                 const selectedRowParent = selectedRow.parentNode;
-                selectedRowParent.classList.add('bg-green-500', 'text-white');
+                selectedRowParent.classList.add('bg-blue-500', 'text-white');
             }
         });
     </script>
-
-
 @endsection

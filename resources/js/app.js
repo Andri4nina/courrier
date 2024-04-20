@@ -1,4 +1,2 @@
-import Swal from '../../node_modules/sweetalert2/dist/sweetalert2.all.min';
+import Swal from 'sweetalert2';
 
-
-window.Swal = Swal;

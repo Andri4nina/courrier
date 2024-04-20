@@ -10,7 +10,7 @@
                 <p>Utilisateurs / <small>Creation</small></p>
             </h3>
             <div class="grid grid-cols-2">
-                <form action="{{ route('user.store') }}" method="POST" class="w-full mt-20 max-w-4xl">
+                <form action="{{ route('user.store') }}" method="POST" class="w-full mt-10 max-w-4xl">
                     @csrf
                     @if ($errors->any())
                         <script type="text/javascript">
@@ -32,6 +32,13 @@
                             })
                         </script>
                     @endif
+                    <div class=" text-white font-bold items-center flex gap-2 mb-5">
+                        <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                        <h2 class="text-white text-base">Information de l'utilisateur</h2>
+
+                    </div>
+
+
                     <div class="w-11/12 mx-auto grid grid-cols-1 gap-2">
                         <div class="">
                             <div
@@ -70,7 +77,7 @@
                     <div class="grid grid-cols-2 my-10 gap-5 w-fit mx-auto  ">
                         <input type="hidden" name="poste_id"/>
                         <button
-                            class="text-white btn-skin2  bg-green-500  hover:bg-green-600 hover:shadow-green-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
+                            class="text-white btn-skin2  bg-blue-500  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
                         <button
                             class="  text-slate-200  bg-slate-800  hover:bg-slate-600 hover:shadow-slate-700 hover:shadow-lg px-4 py-2 rounded-md "
                             type="reset">Annuler</button>
@@ -80,8 +87,12 @@
 
 
                 <div class="mt-10">
-                <h2 class="text-white text-base">Veuillez Selectionner la zone ou l'utilisateur travail</h2>
-                    <table class=" text-center min-w-full">
+                    <div class=" text-white font-bold items-center flex gap-2">
+                        <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
+                        <h2 class="text-white text-base">Veuillez Selectionner la zone ou l'utilisateur travail</h2>
+
+                    </div>
+                     <table class=" text-center min-w-full">
                         <thead class="text-white border-b-4">
                             <tr>
                                 <th class="px-4 py-2">Region</th>
@@ -92,7 +103,7 @@
                         <div class="relative overflow-hidden">
                             <tbody class=" pt-5 text-white overflow-y-scroll">
                                 @foreach ($postes as $poste)
-                                    <tr class="cursor-pointer hover:bg-slate-300 hover:text-slate-600  border-b">
+                                    <tr class="cursor-pointer hover:bg-slate-800 hover:text-slate-50  border-b">
                                         <td class="px-4 py-2" data-poste-id="{{ $poste->id }}">
                                             {{ $poste->region }}
                                         </td>
@@ -125,9 +136,9 @@
             rows.forEach(row => {
                 row.addEventListener('click', () => {
                     rows.forEach(r => {
-                        r.classList.remove('bg-green-500', 'text-white');
+                        r.classList.remove('bg-blue-500', 'text-white');
                     });
-                    row.classList.add('bg-green-500', 'text-white');
+                    row.classList.add('bg-blue-500', 'text-white');
                     const posteId = row.querySelector('td').dataset.posteId;
                     document.querySelector('input[name="poste_id"]').value = posteId;
                 });
