@@ -53,7 +53,7 @@
                                 </button>
                                 <div class="w-10/12 inputfield px-4 py-2 my-5 border-b-2">
                                     <input type="text" placeholder="Chercher une poste" name="search"
-                                        class="bg-transparent outline-none text-white">
+                                        class="bg-transparent outline-none w-full text-white">
                                 </div>
                                 <button class="absolute right-2 text-white">
                                     <i class="bx bx-search"></i>
@@ -79,7 +79,7 @@
                             <tbody class=" pt-5 text-white overflow-y-scroll">
                                 @if (count($poste) > 0)
                                     @foreach ($poste as $postes)
-                                        <tr class="hover:bg-slate-300 hover:text-slate-600  border-b">
+                                        <tr class="hover:bg-slate-800 hover:text-slate-50  border-b">
                                             <td class="px-4 py-2  ">
                                                 {{ $postes->region }}
                                             </td>
@@ -127,8 +127,9 @@
 
                     </table>
                     <div class="mt-20  mb-5 flex justify-center items-center">
-
+                        {{ $poste->links('pages.layouts.pagination') }}
                     </div>
+
                 </div>
 
             </div>

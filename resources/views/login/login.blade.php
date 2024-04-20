@@ -12,12 +12,12 @@
             </div>
         </div>
     </a>
-    <div>
+    <div class="flex gap-2 items-center">
         <label class="text-white text-sm" for="">Lieu :</label>
         <br>
-        <select name="" id="" class="py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
+        <select name="" id="" class="outline-none py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
             @foreach ($postes as $poste)
-                <option value="">{{ $poste -> region }}</option>
+                <option class="py-2 px-4 border-b-2 border-white h-4" value="">{{ $poste -> region }}</option>
             @endforeach
         </select>
     </div>
