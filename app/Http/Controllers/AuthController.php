@@ -6,6 +6,8 @@ use App\Models\Poste;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -54,5 +56,18 @@ class AuthController extends Controller
        {
            return view('pages.menu');
        }
+
+
+         // Gère le processus de déconnexion
+   public function logout(Request $request): RedirectResponse
+   {
+
+       // Déconnecte l'utilisateur et nettoie la session
+       Auth::logout();
+       $request->session()->invalidate();
+       $request->session()->regenerateToken();
+       // Redirige vers la page de connexion
+       return redirect()->route('login.login');
+   }
 
 }

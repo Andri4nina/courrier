@@ -10,6 +10,11 @@
         </div>
     </a>
     <div class="text-white flex justify-center items-center gap-2">
-        <span class="font-semibold">Andrianina</span> <i class="text-xl bx bx-user"></i>
+        <span class="font-semibold">
+        @auth
+        {{\Illuminate\Support\Facades\Auth::user()->name }}
+        @endauth
+
+        </span> <i class="text-xl bx bx-user"></i>
      </div>
 </header>
