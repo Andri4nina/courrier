@@ -14,6 +14,8 @@
     },
     "dependencies": {
         "boxicons": "^2.1.4",
-        "sweetalert2": "^11.10.7"
+        "bundle": "^2.1.0",
+        "jquery": "^3.7.1",
+        "sweetalert2": "^11.10.8"
     }
 }

@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v11.10.7
+* sweetalert2 v11.10.8
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -75,7 +75,7 @@
   }
   function _toPropertyKey(t) {
     var i = _toPrimitive(t, "string");
-    return "symbol" == typeof i ? i : String(i);
+    return "symbol" == typeof i ? i : i + "";
   }
   function _typeof(o) {
     "@babel/helpers - typeof";
@@ -3585,7 +3585,11 @@
    * @param {DomCache} domCache
    */
   var handleContainerMousedown = function handleContainerMousedown(domCache) {
-    domCache.container.onmousedown = function () {
+    domCache.container.onmousedown = function (e) {
+      // prevent the modal text from being selected on double click on the container (allowOutsideClick: false)
+      if (e.target === domCache.container) {
+        e.preventDefault();
+      }
       domCache.popup.onmouseup = function (e) {
         domCache.popup.onmouseup = function () {};
         // We also need to check if the mouseup target is a child of the popup
@@ -3671,18 +3675,17 @@
    */
   function mixin(mixinParams) {
     var MixinSwal = /*#__PURE__*/function (_this) {
-      _inherits(MixinSwal, _this);
       function MixinSwal() {
         _classCallCheck(this, MixinSwal);
         return _callSuper(this, MixinSwal, arguments);
       }
-      _createClass(MixinSwal, [{
+      _inherits(MixinSwal, _this);
+      return _createClass(MixinSwal, [{
         key: "_main",
         value: function _main(params, priorityMixinParams) {
           return _get(_getPrototypeOf(MixinSwal.prototype), "_main", this).call(this, params, Object.assign({}, mixinParams, priorityMixinParams));
         }
       }]);
-      return MixinSwal;
     }(this); // @ts-ignore
     return MixinSwal;
   }
@@ -3848,7 +3851,7 @@
     /**
      * @returns {number}
      */
-    _createClass(Timer, [{
+    return _createClass(Timer, [{
       key: "start",
       value: function start() {
         if (!this.running) {
@@ -3913,7 +3916,6 @@
         return this.running;
       }
     }]);
-    return Timer;
   }();
 
   var swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
@@ -4333,7 +4335,7 @@
       this.isAwaitingPromise = false;
       _classPrivateFieldSet2(_promise, this, this._main(currentInstance.params));
     }
-    _createClass(SweetAlert, [{
+    return _createClass(SweetAlert, [{
       key: "_main",
       value: function _main(userParams) {
         var mixinParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -4382,7 +4384,6 @@
         return _classPrivateFieldGet2(_promise, this)["finally"](onFinally);
       }
     }]);
-    return SweetAlert;
   }();
 
   /**
@@ -4598,7 +4599,7 @@
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.10.7';
+  SweetAlert.version = '11.10.8';
 
   var Swal = SweetAlert;
   // @ts-ignore
