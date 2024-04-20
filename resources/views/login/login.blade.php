@@ -15,9 +15,11 @@
     <div class="flex gap-2 items-center">
         <label class="text-white text-sm" for="">Lieu :</label>
         <br>
-        <select name="" id="" class="outline-none py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
+        <select name="region_select" id="region_select" class="outline-none py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
+            <option class="py-2 px-4 border-b-2 border-white h-4"></option>
+
             @foreach ($postes as $poste)
-                <option class="py-2 px-4 border-b-2 border-white h-4" value="">{{ $poste -> region }}</option>
+                <option class="py-2 px-4 border-b-2 border-white h-4" value="{{ $poste->id }}">{{ $poste->region }}</option>
             @endforeach
         </select>
     </div>
@@ -52,16 +54,16 @@
                 @endif
         <i class="bx bx-user-circle text-center text-9xl text-white"></i>
         <div class="inputfield py-1 my-5 border-b-2">
-            <input type="text" placeholder="Nom Utilisateur" class="text-sm w-full bg-transparent outline-none text-white">
+            <input name="name" type="text" placeholder="Nom Utilisateur" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
         <div class="inputfield py-1 my-5 border-b-2">
-            <input type="text" placeholder="Email" class="text-sm w-full bg-transparent outline-none text-white">
+            <input name="email" type="text" placeholder="Email" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
         <div class="inputfield py-1 my-5 border-b-2">
-            <input type="password" placeholder="Mot de passe" class="text-sm w-full bg-transparent outline-none text-white">
+            <input name="mdp" type="password" placeholder="Mot de passe" class="text-sm w-full bg-transparent outline-none text-white">
         </div>
 
-        <input type="hidden" name="post_localisation">
+        <input type="hidden" id="poste_id" name="poste_id" >
         <button class="font-bold text-sm mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all">
             Se Connecter
         </button>
@@ -70,4 +72,11 @@
 
     </div>
 </div>
+
+<script>
+    document.getElementById('region_select').addEventListener('change', function() {
+        var selectedRegionId = this.value;
+        document.getElementById('poste_id').value = selectedRegionId;
+    });
+</script>
 @endsection
