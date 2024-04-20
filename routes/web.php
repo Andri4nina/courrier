@@ -21,22 +21,23 @@ Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
 
 
 /* route pour postes */
-Route::prefix('poste')->group(function () {
+Route::middleware(['auth'])->prefix('poste')->group(function () {
     Route::get('/', [PosteController::class, 'index'])->name('poste.index');
     Route::get('/creation', [PosteController::class, 'create'])->name('poste.create');
-    Route::get('/mod{id}fication', [PosteController::class, 'edit'])->name('poste.edit');
+    Route::get('/modification/{id}', [PosteController::class, 'edit'])->name('poste.edit');
     Route::post('/store', [PosteController::class, 'store'])->name('poste.store');
     Route::post('/', [PosteController::class, 'update'])->name('poste.update');
     Route::delete('/{id}', [PosteController::class, 'destroy'])->name('poste.destroy');
 });
 
-
 /* route pour user */
-Route::prefix('user')->group(function () {
+Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
     Route::get('/creation', [UserController::class, 'create'])->name('user.create');
-    Route::get('/mod{id}fication', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/modification/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/', [UserController::class, 'update'])->name('user.update');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
+
+
