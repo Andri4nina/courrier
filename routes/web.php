@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourrierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
 
@@ -18,7 +19,7 @@ use App\Http\Controllers\PosteController;
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
 Route::post('/Menu', [AuthController::class, 'doLogin'])->name('auth.dologin');
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
-
+Route::get('/createCour', [CourrierController::class, "create"]);
 
 /* route pour postes */
 Route::middleware(['auth'])->prefix('poste')->group(function () {
