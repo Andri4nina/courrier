@@ -16,9 +16,9 @@
         <label class="text-white text-sm" for="">Lieu :</label>
         <br>
         <select name="" id="" class="py-2 px-4 rounded-sm bg-blue-800 text-white text-sm font-bold hover:cursor-pointer hover:shadow-lg hover:shadow-blue-700">
-            <option value="">Fianarantsoa</option>
-            <option value="">Antananarivo</option>
-            <option value="">Majunga</option>
+            @foreach ($postes as $poste)
+                <option value="">{{ $poste -> region }}</option>
+            @endforeach
         </select>
     </div>
 </div>
