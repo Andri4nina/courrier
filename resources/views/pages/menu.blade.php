@@ -27,7 +27,7 @@
             <div class="flex gap-2">
                 <div class="grid grid-cols-2 gap-2">
                     <div class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                       <a href="#" class="relative w-full h-full flex justify-center items-center">
+                       <a href="/createCour" class="relative w-full h-full flex justify-center items-center">
 
                        <div class="text-7xl absolute -bottom-5 text-slate-400 -right-3  group-hover:text-blue-500"><i class="bx bx-plus "></i></div>
                        <div class="z-10 font-medium"> + Nouvelle Colis </div>
