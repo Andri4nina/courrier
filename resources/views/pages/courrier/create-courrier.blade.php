@@ -9,7 +9,7 @@
                     class="bx bx-chevron-left"></i></a>
             <p>Courrier/<small>create</small></p>
         </h3>
-        <form action="courrier/create" method="POST" class="w-full mt-10 max-w-6xl">
+        <form action="create" method="POST" class="w-full mt-10 max-w-6xl">
             @csrf
             @if ($errors->any())
                 <script type="text/javascript">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='libelle' value={{ old('region') }}>
+                                    name='libelle' value={{ old('libelle') }}>
                             </div>
                         </div>
                         <div
@@ -55,7 +55,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='poids' value={{ old('adresse') }}>
+                                    name='poids' value={{ old('poids') }}>
                             </div>
                         </div>
                         <div
@@ -65,7 +65,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="prix" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="bp" value={{ old('bp') }}>
+                                    name="prix" value={{ old('prix') }}>
                             </div>
                         </div>
                         <div
@@ -74,8 +74,9 @@
                                 Prov exp
                             </div>
                             <div class="w-2/3">
-                                <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="province_exp" value={{ old('tel') }}>
+                                <input disabled="true" type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
+                                    name="" value={{ $posteUser -> region }}>
+                                <input type="hidden" name="province_exp" value={{$posteUser -> id}}>
                             </div>
                         </div>
                         <div
@@ -84,8 +85,11 @@
                                 Prov dest
                             </div>
                             <div class="w-2/3">
-                                <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="province_dest" value={{ old('tel') }}>
+                                <select name="province_dest" class="bg-transparent text-white p-0">
+                                    @foreach ($postes as $poste)
+                                        <option value={{$poste -> id}}>{{$poste -> region}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -103,7 +107,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='nom' value={{ old('region') }}>
+                                    name='nom_exp' value={{ old('region') }}>
                             </div>
                         </div>
                         <div
@@ -113,7 +117,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='prenom' value={{ old('adresse') }}>
+                                    name='prenom_exp' value={{ old('adresse') }}>
                             </div>
                         </div>
                         <div
@@ -123,7 +127,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="adresse" value={{ old('bp') }}>
+                                    name="adresse_exp" value={{ old('bp') }}>
                             </div>
                         </div>
                         <div
@@ -133,7 +137,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="email" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="email" value={{ old('email') }}>
+                                    name="email_exp" value={{ old('email') }}>
                             </div>
                         </div>
                         <div
@@ -143,7 +147,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="tel" value={{ old('tel') }}>
+                                    name="tel_exp" value={{ old('tel') }}>
                             </div>
                         </div>
                         <div
@@ -153,7 +157,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="cin" value={{ old('tel') }}>
+                                    name="cin_exp" value={{ old('tel') }}>
                             </div>
                         </div>
                     </div>
@@ -171,7 +175,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='nom' value={{ old('region') }}>
+                                    name='nom_dest' value={{ old('region') }}>
                             </div>
                         </div>
                         <div
@@ -181,7 +185,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name='prenom' value={{ old('adresse') }}>
+                                    name='prenom_dest' value={{ old('adresse') }}>
                             </div>
                         </div>
                         <div
@@ -191,7 +195,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="adresse" value={{ old('bp') }}>
+                                    name="adresse_dest" value={{ old('bp') }}>
                             </div>
                         </div>
                         <div
@@ -201,7 +205,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="email" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="email" value={{ old('email') }}>
+                                    name="email_dest" value={{ old('email') }}>
                             </div>
                         </div>
                         <div
@@ -211,7 +215,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="tel" value={{ old('tel') }}>
+                                    name="tel_dest" value={{ old('tel') }}>
                             </div>
                         </div>
                         <div
@@ -221,7 +225,7 @@
                             </div>
                             <div class="w-2/3">
                                 <input type="tel" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                    name="cin" value={{ old('tel') }}>
+                                    name="cin_dest" value={{ old('tel') }}>
                             </div>
                         </div>
                     </div>

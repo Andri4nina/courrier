@@ -11,7 +11,7 @@ class Facture extends Model
 
     protected $fillable = [
         "id",
-        "libelle"
+        "libele"
     ];
 
 }
