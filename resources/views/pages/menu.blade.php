@@ -9,14 +9,10 @@
 <div class="w-full max-h-screen h-screen relative flex justify-center">
     <div class=" gap-12 flex justify-center items-start">
         <div>
-            <div class="w-full grid grid-cols-2 gap-2 mb-2 dashboard">
+            <div class="w-full gap-2 mb-2 dashboard">
                 <div class="w-full h-full">
 
-                    <div class="h-36 bg-red-500 w-full">
 
-                    </div>
-                </div>
-                <div>
 
                     <div class="h-36 bg-red-500 w-full">
 
@@ -81,7 +77,7 @@
         <div class="relative h-full">
             <div class="grid grid-cols-1 gap-2">
                 <div class=" text-white flex justify-center items-center w-36 h-36">
-                    <div class="clock ">
+                    <div class="clock">
                         <div class="wrap">
                           <span class="hour"></span>
                           <span class="minute"></span>
@@ -109,4 +105,28 @@
     </div>
 
 </div>
+
+<script>
+var inc = 1000;
+
+clock();
+
+function clock() {
+  const date = new Date();
+
+  const hours = ((date.getHours() + 11) % 12 + 1);
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  const hour = hours * 30;
+  const minute = minutes * 6;
+  const second = seconds * 6;
+
+  document.querySelector('.hour').style.transform = `rotate(${hour}deg)`
+  document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
+  document.querySelector('.second').style.transform = `rotate(${second}deg)`
+}
+
+setInterval(clock, inc);
+</script>
 @endsection

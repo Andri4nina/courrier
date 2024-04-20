@@ -69,7 +69,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="mdp"
-                                        value={{ $user->password }}>
+                                        value="{{ password_hash($user->password, PASSWORD_DEFAULT) }}">
                                 </div>
                             </div>
 

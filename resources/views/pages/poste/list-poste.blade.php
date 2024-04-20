@@ -1,6 +1,27 @@
 @extends('welcome')
 
 @section('content')
+    @if ($message = Session::get('success'))
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-start',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ $message }}'
+        })
+    </script>
+    @endif
+
     {{ view('pages.layouts.headers') }}
     <div class="relative w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
@@ -10,26 +31,6 @@
                 <p>Postes</p>
             </h3>
 
-            @if ($message = Session::get('success'))
-                <script type="text/javascript">
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: '{{ $message }}'
-                    })
-                </script>
-            @endif
 
 
             <div class="bounceslideInFromRight p-5 min-w-4xl crud-card">
@@ -146,4 +147,24 @@
 
 
     </div>
+    <script type="text/javascript">
+        window.deleteConfirm = function(e) {
+            e.preventDefault();
+            var form = e.target.form;
+            Swal.fire({
+                    title: 'Etes vous sur de vouloir supprimer cette poste ?',
+                    text: "Vous ne pouvez plus retourner en arriere!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1F9B4F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, supprimer!',
+                    cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                form.submit();
+                }
+            })
+        }
+    </script>
 @endsection

@@ -142,5 +142,24 @@
 
 
     </div>
-
+    <script type="text/javascript">
+        window.deleteConfirm = function(e) {
+            e.preventDefault();
+            var form = e.target.form;
+            Swal.fire({
+                    title: 'Etes vous sur de vouloir supprimer cet utilisateur ?',
+                    text: "Vous ne pouvez plus retourner en arriere!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1F9B4F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, supprimer!',
+                    cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                form.submit();
+                }
+            })
+        }
+    </script>
 @endsection

@@ -18,7 +18,10 @@ use App\Http\Controllers\PosteController;
 |
 */
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
-Route::post('/Menu', [AuthController::class, 'doLogin'])->name('auth.dologin');
+Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
+
+
+
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
 Route::get('/createCour', [CourrierController::class, "create"]);
 

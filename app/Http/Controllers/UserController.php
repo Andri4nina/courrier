@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Poste;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -58,7 +59,7 @@ class UserController extends Controller
 
         $users->name = $request->input('name');
         $users->email = $request->input('Email');
-        $users->password = $request->input('mdp');
+        $users->password = Hash::make($request->input('mdp'));
         $users->postes_id = $request->input('poste_id');
 
 
@@ -82,7 +83,7 @@ class UserController extends Controller
 
         $users->name = $request->input('name');
         $users->email = $request->input('Email');
-        $users->password = $request->input('mdp');
+        $users->password = Hash::make($request->input('mdp'));
         $users->postes_id = $request->input('poste_id');
 
         $users->save();
