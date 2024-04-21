@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CourrierController;
 use App\Http\Controllers\KimController;
 use App\Http\Controllers\ParametreController;
@@ -57,4 +58,14 @@ Route::prefix('courrier')->middleware('auth')->group(function () {
 Route::prefix('parametre')->middleware('auth')->group(function () {
     Route::get("/{id}", [ParametreController::class, "index"])->name('parametre.index');
     Route::post("/create", [ParametreController::class, "update"])->name('parametre.update');
+});
+
+
+/* route pour client */
+Route::prefix('client')->middleware('auth')->group(function () {
+    Route::get('/', [ClientController::class, 'index'])->name('client.index');
+    Route::get('/modification/{id}', [ClientController::class, 'edit'])->name('client.edit');
+    Route::get('/detail/{id}', [ClientController::class, 'details'])->name('client.detail');
+    Route::post('/', [ClientController::class, 'update'])->name('client.update');
+    Route::delete('/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
 });

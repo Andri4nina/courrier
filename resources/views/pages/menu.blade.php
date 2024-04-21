@@ -5,7 +5,7 @@
 
 @section('content')
     {{ view('pages.layouts.headers') }}
-   
+
 
 
     <div class="w-full max-h-screen h-screen relative flex justify-center">
@@ -70,7 +70,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-purple-600  hover:bg-purple-400 hover:shadow-purple-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('client.index') }} class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-purple-500">
                                     <i class="bx bx-group"></i>
