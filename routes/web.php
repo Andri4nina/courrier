@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourrierController;
 use App\Http\Controllers\KimController;
+use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
 
@@ -45,7 +46,15 @@ Route::prefix('user')->middleware('auth')->group(function () {
 });
 
 /* route pour courrier */
-Route::prefix('courrier') -> group(function () {
+Route::prefix('courrier')->middleware('auth')->group(function () {
     Route::get("/", [CourrierController::class, "index"])->name('courrier.index');
     Route::post("/create", [CourrierController::class, "create"])->name('courrier.create');
+});
+
+
+
+/* route pour parametre */
+Route::prefix('parametre')->middleware('auth')->group(function () {
+    Route::get("/{id}", [ParametreController::class, "index"])->name('parametre.index');
+    Route::post("/create", [ParametreController::class, "update"])->name('parametre.update');
 });

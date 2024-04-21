@@ -25,7 +25,7 @@ class AuthController extends Controller
                     'name' => 'admin',
                     'email' => 'admin@gmail.com',
                     'password' => Hash::make('admin'),
-                    'postes_id' => 1,
+                    'postes_id' => 0,
                     'role' => 1,
                 ]);
             }

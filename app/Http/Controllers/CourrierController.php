@@ -25,7 +25,7 @@ class CourrierController extends Controller
         $courriersForm = $request -> validate([
             "libelle" => "required",
             "poids" => "required",
-            "prix" => "required" 
+            "prix" => "required"
         ]);
 
         $destinataireForm = $request -> validate([

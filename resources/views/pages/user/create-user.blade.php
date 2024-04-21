@@ -10,6 +10,7 @@
                 <p>Utilisateurs / <small>Creation</small></p>
             </h3>
             <div class="grid grid-cols-2">
+            <div>
                 <form action="{{ route('user.store') }}" method="POST" class="w-full mt-10 max-w-4xl">
                     @csrf
                     @if ($errors->any())
@@ -84,6 +85,12 @@
                     </div>
 
                 </form>
+
+                <div class="w-1/2 flex justify-center mx-auto pt-5">
+                    <img src="{{ asset('images/svg/New entries-bro.svg') }}" alt="">
+                </div>
+            </div>
+
 
 
                 <div class="mt-10">

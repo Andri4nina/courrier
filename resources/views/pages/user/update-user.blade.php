@@ -10,6 +10,7 @@
                 <p>Utilisateurs / <small>Modification</small></p>
             </h3>
             <div class="grid grid-cols-2">
+            <div>
                 <form action="{{ route('user.update') }}" method="POST" class="w-full mt-10 max-w-4xl">
                     @csrf
                     @if ($errors->any())
@@ -69,7 +70,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="mdp"
-                                        value="{{ password_hash($user->password, PASSWORD_DEFAULT) }}">
+                                       >
                                 </div>
                             </div>
 
@@ -86,6 +87,11 @@
                     </div>
 
                 </form>
+                <div class="w-1/2 flex justify-center mx-auto pt-5">
+                    <img src="{{ asset('images/svg/New entries-bro.svg') }}" alt="">
+                </div>
+            </div>
+
 
 
                 <div class="mt-10">
