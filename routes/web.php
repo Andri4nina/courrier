@@ -23,7 +23,6 @@ Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout')
 
 
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
-Route::get('/createCour', [CourrierController::class, "create"]);
 
 /* route pour postes */
 Route::prefix('poste')->middleware('auth')->group(function () {
@@ -43,4 +42,10 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/', [UserController::class, 'update'])->name('user.update');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+});
+
+/* route pour courrier */
+Route::prefix('courrier') -> group(function () {
+    Route::get("/", [CourrierController::class, "index"]);
+    Route::post("/create", [CourrierController::class, "create"]);
 });

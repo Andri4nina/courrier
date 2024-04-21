@@ -23,7 +23,7 @@
                     <div class="grid grid-cols-2 gap-2">
                         <div
                             class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="/createCour" class="relative w-full h-full flex justify-center items-center">
+                            <a href="/courrier/" class="relative w-full h-full flex justify-center items-center">
 
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50   group-hover:text-blue-500">
