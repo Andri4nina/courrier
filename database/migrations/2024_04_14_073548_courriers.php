@@ -26,6 +26,10 @@ return new class extends Migration
             $table->unsignedBigInteger("user_id");
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('poste_exp_id');
+            $table->foreign('poste_exp_id')->references('id')->on('postes')->onDelete('cascade');
+            $table->unsignedBigInteger('poste_dest_id');
+            $table->foreign('poste_dest_id')->references('id')->on('postes')->onDelete('cascade');
         });
     }
 

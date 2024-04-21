@@ -72,14 +72,18 @@ class CourrierController extends Controller
             "libele" => $courriersForm["libelle"]
         ]);
 
+        // dd($expediteur["province"], $destinataire["province"]);
+
         Courrier::create([
             "libelle" => $courriersForm["libelle"],
             "poids" => $courriersForm["poids"],
             "prix" => $courriersForm["prix"],
             "exp_id" => $expediteur["id"],
+            "poste_exp_id" => $expediteur["province"],
+            "poste_dest_id" => $destinataire["province"],
             "dest_id" => $destinataire["id"],
             "fact_id" => $facture["id"],
-            "user_id" => auth() -> user() -> id
+            "user_id" => auth() -> user() -> id,
         ]);
 
         return redirect("/courrier");
