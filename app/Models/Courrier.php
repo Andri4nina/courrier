@@ -18,6 +18,8 @@ class Courrier extends Model
         "dest_id",
         "fact_id",
         "user_id",
+        "poste_exp_id",
+        "poste_dest_id"
     ];
 
 }
