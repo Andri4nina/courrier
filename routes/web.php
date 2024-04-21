@@ -46,6 +46,6 @@ Route::prefix('user')->middleware('auth')->group(function () {
 
 /* route pour courrier */
 Route::prefix('courrier') -> group(function () {
-    Route::get("/", [CourrierController::class, "index"]);
-    Route::post("/create", [CourrierController::class, "create"]);
+    Route::get("/", [CourrierController::class, "index"])->name('courrier.index');
+    Route::post("/create", [CourrierController::class, "create"])->name('courrier.create');
 });
