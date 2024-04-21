@@ -2,6 +2,26 @@
 
 @section('content')
     {{ view('pages.layouts.headers') }}
+    @if ($message = Session::get('success'))
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ $message }}'
+        })
+    </script>
+    @endif
     <div class="w-10/12 mx-auto max-h-screen h-screen flex justify-center">
         <div class=" w-full">
             <h3 class="text-white text-xl font-semibold  flex items-center">
@@ -10,7 +30,7 @@
                 <p>Parametre </p>
             </h3>
             <div class="grid grid-cols-2">
-                <form action="{{ route('user.update') }}" method="POST" class="w-full mt-10 max-w-4xl">
+                <form action="{{ route('parametre.update') }}" method="POST" class="w-full mt-10 max-w-4xl">
                     @csrf
                     @if ($errors->any())
                         <script type="text/javascript">
@@ -39,31 +59,70 @@
 
                         </div>
                         <div class="">
-                            <div class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
-                                <div class="text-white w-1/3 border-r">
-                                    Nom utilisateur
+                            @if (auth()->check() && auth()->user()->role == 1)
+                                <div
+                                    class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
+                                    <div class="text-white w-1/3 border-r">
+                                        Nom utilisateur
+                                    </div>
+                                    <input type="hidden"
+                                        class="w-full text-left bg-transparent pr-3 outline-none text-white" name='name'
+                                        value="{{ $user->name }}">
+                                    <div class="w-2/3">
+                                        <input type="text"
+                                            class="w-full text-left bg-transparent pr-3 outline-none text-white"
+                                            value="{{ $user->name }}" disabled>
+                                    </div>
                                 </div>
-                                <div class="w-2/3">
-                                    <input type="text" class="w-full text-left bg-transparent pr-3 outline-none text-white" name='name'
-                                        value="{{ $user->name }}" {{ $user->role == 1 ? 'disabled' : '' }}>
+                                <div
+                                    class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
+                                    <div class="text-white w-1/3 border-r">
+                                        Email
+                                    </div>
+                                    <input type="hidden"
+                                        class=" w-full text-left bg-transparent pr-3 outline-none text-white" name='Email'
+                                        value="{{ $user->email }}">
+                                    <div class="w-2/3">
+                                        <input type="text"
+                                            class=" w-full text-left bg-transparent pr-3 outline-none text-white"
+                                            value="{{ $user->email }}"disabled>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
-                                <div class="text-white w-1/3 border-r">
-                                    Email
+                            @else
+                                <div
+                                    class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
+                                    <div class="text-white w-1/3 border-r">
+                                        Nom utilisateur
+                                    </div>
+                                    <div class="w-2/3">
+                                        <input type="text"
+                                            class="w-full text-left bg-transparent pr-3 outline-none text-white"
+                                            name='name' value="{{ $user->name }}">
+                                    </div>
                                 </div>
-                                <div class="w-2/3">
-                                    <input type="text" class=" w-full text-left bg-transparent pr-3 outline-none text-white" name='Email'
-                                        value="{{ $user->email }}" {{ $user->role == 1 ? 'disabled' : '' }}>
+                                <div
+                                    class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
+                                    <div class="text-white w-1/3 border-r">
+                                        Email
+                                    </div>
+                                    <div class="w-2/3">
+                                        <input type="text"
+                                            class=" w-full text-left bg-transparent pr-3 outline-none text-white"
+                                            name='Email' value="{{ $user->email }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
+                            @endif
+
+
+
+                            <div
+                                class="inputfield w-full px-4 relative py-1 mb-5 border-b-2 flex justify-between items-center gap-2">
                                 <div class="text-white w-1/3 border-r">
                                     Mot de passe
                                 </div>
                                 <div class="w-2/3">
-                                    <input type="password" class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="mdp">
+                                    <input type="password"
+                                        class="w-full text-left bg-transparent pr-3 outline-none text-white" name="mdp">
                                 </div>
                             </div>
                         </div>
@@ -86,8 +145,4 @@
         </div>
 
     </div>
-
-
-
-
 @endsection

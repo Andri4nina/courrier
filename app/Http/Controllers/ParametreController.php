@@ -33,7 +33,7 @@ class ParametreController extends Controller
 
         $users->save();
 
-        return redirect()->route('parametre.index')->with('success', 'Utilisateur modifié avec succès');
+        return back()->with('success', 'Utilisateur modifié avec succès');
 }
 
 }
