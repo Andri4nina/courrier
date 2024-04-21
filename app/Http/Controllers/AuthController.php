@@ -25,8 +25,15 @@ class AuthController extends Controller
                     'name' => 'admin',
                     'email' => 'admin@gmail.com',
                     'password' => Hash::make('admin'),
-                    'postes_id' => 0,
+                    'postes_id' => 1,
                     'role' => 1,
+                ]);
+                Poste::create([
+                    'region' => 'Analamanga',
+                    'adresse' => 'lot XVIII Antanimena',
+                    'tel' => '034212112',
+                    'email' => 'poste_analamanga@gmail.com',
+                    'bp' => '101',
                 ]);
             }
 
