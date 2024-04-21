@@ -23,7 +23,7 @@ Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
 Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 
-Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu');
+Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu')->middleware('auth');
 
 /* route pour postes */
 Route::prefix('poste')->middleware('auth')->group(function () {
