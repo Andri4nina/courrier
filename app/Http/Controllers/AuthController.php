@@ -47,9 +47,8 @@ class AuthController extends Controller
         }
 
         return (to_route('login.login'))->withErrors(
-            "Votre email ou mot de passe  ou mot de passe incorrect"
+            "Votre email ou mot de passe  ou mot de passe incorrect ou veuillez selectionner une region "
         )->onlyInput('name','email','poste_id');
-
        }
 
        public function toMenu()
