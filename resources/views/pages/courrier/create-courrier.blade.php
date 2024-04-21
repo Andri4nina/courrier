@@ -9,7 +9,7 @@
                     class="bx bx-chevron-left"></i></a>
             <p>Courrier/<small>create</small></p>
         </h3>
-        <form action="create" method="POST" class="w-full mt-10 max-w-6xl">
+        <form action={{ route('courrier.create') }} method="POST" class="w-full mt-10 max-w-6xl">
             @csrf
             @if ($errors->any())
                 <script type="text/javascript">
