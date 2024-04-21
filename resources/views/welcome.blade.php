@@ -9,6 +9,8 @@
 
         @vite(['resources/css/app.css','resources/js/app.js'])
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     </head>
     <body class="bg-slate-900">
     <section class="w-full  min-h-screen">

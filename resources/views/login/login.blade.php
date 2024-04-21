@@ -1,6 +1,7 @@
 @extends('welcome')
 
 @section('content')
+
     <div class="overflow-hidden flex m-5 items-center justify-between">
         <a href="#">
             <div class="top-5 left-5 flex justify-center gap-5 items-center">
