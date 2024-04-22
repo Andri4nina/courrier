@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Poste;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Models\Courrier;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -29,7 +32,7 @@ class AuthController extends Controller
                     'role' => 1,
                 ]);
                 Poste::create([
-                    'region' => 'Analamanga',
+                    'region' => 'ANALAMANGA',
                     'adresse' => 'lot XVIII Antanimena',
                     'tel' => '034212112',
                     'email' => 'poste_analamanga@gmail.com',
@@ -58,11 +61,34 @@ class AuthController extends Controller
         )->onlyInput('name','email','poste_id');
        }
 
-       public function toMenu()
-       {
-           return view('pages.menu');
-       }
 
+ public function toMenu()
+       {
+
+        $postId = auth()->user()->postes_id;
+        $sevenMonthsAgo = Carbon::now()->subMonths(7);
+        $courriers_exp = Courrier::where('poste_exp_id', $postId)
+        ->whereDate('created_at', '>=', $sevenMonthsAgo)
+        ->select(DB::raw('MONTH(created_at) as mois'), DB::raw('COUNT(*) as total'))
+        ->groupBy('mois')
+        ->get();
+
+
+        $courriers_dest = Courrier::where('poste_dest_id', $postId)
+        ->whereDate('created_at', '>=', $sevenMonthsAgo)
+        ->select(DB::raw('MONTH(created_at) as mois'), DB::raw('COUNT(*) as total'))
+        ->groupBy('mois')
+        ->get();
+        $labels = [];
+
+        $aujourdhui = Carbon::now();
+
+        for ($i = 0; $i <7; $i++) {
+            $labels[] = $aujourdhui->subMonths($i)->translatedFormat('F');
+        }
+
+        return view('pages.menu', ['courriers_exp' => $courriers_exp,'courriers_dest' => $courriers_dest,'labels' => $labels]);
+       }
 
          // Gère le processus de déconnexion
    public function logout(Request $request): RedirectResponse

@@ -11,7 +11,7 @@
             </h3>
             <div class="grid grid-cols-2">
             <div>
-                <form action="{{ route('user.update') }}" method="POST" class="w-full mt-10 max-w-4xl">
+                <form action="{{ route('user.update') }}" method="POST" class="w-full mt-10 max-w-4xl"  autocomplete="false">
                     @csrf
                     @if ($errors->any())
                         <script type="text/javascript">
