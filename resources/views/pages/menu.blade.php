@@ -263,11 +263,13 @@
 
     <script>
 
-        const data = {
-            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet'],
-            expeditions: [25, 30, 28, 35, 40, 38, 42],
-            receptions: [20, 22, 24, 28, 30, 32, 35]
-        };
+const data = {
+    labels: {!! json_encode($labels) !!}, 
+    expeditions: {!! $courriers_exp->pluck('total') !!},
+    receptions: {!! $courriers_dest->pluck('total') !!}
+};
+
+
 
         // Configuration du graphique
         const config = {
