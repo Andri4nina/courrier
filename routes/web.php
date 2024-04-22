@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CourrierController;
+use App\Http\Controllers\FactController;
 use App\Http\Controllers\KimController;
 use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\UserController;
@@ -69,3 +70,6 @@ Route::prefix('client')->middleware('auth')->group(function () {
     Route::post('/', [ClientController::class, 'update'])->name('client.update');
     Route::delete('/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
 });
+
+/* Test */
+Route::get("/fact", [FactController::class, 'generate'])->name('fact.generate');
