@@ -51,6 +51,9 @@ Route::prefix('user')->middleware('auth')->group(function () {
 Route::prefix('courrier')->middleware('auth')->group(function () {
     Route::get("/", [CourrierController::class, "index"])->name('courrier.index');
     Route::post("/create", [CourrierController::class, "create"])->name('courrier.create');
+    Route::get("/expedition", [CourrierController::class, "showExpCourrier"])->name('courrier.expediteur');
+    Route::get("/reception", [CourrierController::class, "showDestCourrier"])->name('courrier.destinataire');
+    Route::get("/archive", [CourrierController::class, "archive"])->name('courrier.archive');
 });
 
 

@@ -125,20 +125,20 @@
     <script>
         // Données de test (à remplacer par vos données réelles)
         const expediesData = {
-            labels: ["Expédiés", "Autres"],
+            labels: ["Expédiés par le client", "Expédiés par les autres clients"],
             datasets: [{
                 label: 'Nombre de colis expédiés',
-                data: [12, 88],
+                data: [{{$nombreCourriersexp}}, {{$resteExp}}],
                 backgroundColor: ['#FF6384', '#36A2EB'],
                 borderWidth: 1
             }],
         };
 
         const recusData = {
-            labels: ["Reçus", "Autres"],
+            labels: ["Reçus par le client", "Reçus par les autres"],
             datasets: [{
                 label: 'Nombre de colis reçus',
-                data: [8, 92],
+                data: [{{$nombreCourriersdest}}, {{$resteDest}}],
                 backgroundColor: ['#FF6384', '#36A2EB'],
                 borderWidth: 1
             }]

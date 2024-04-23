@@ -45,7 +45,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href={{route('courrier.expediteur')}} class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50 group-hover:text-green-500">
                                     <i class="bx bxs-truck"></i>
@@ -55,7 +55,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-yellow-600  hover:bg-yellow-400 hover:shadow-yellow-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href="{{route('courrier.destinataire')}}" class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-yellow-500">
                                     <i class="bx bx-check"></i>
@@ -120,9 +120,9 @@
                         </div>
                     </div>
                     <div class="bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg  flex flex-col text-white mx-auto justify-center items-center w-36 h-36" id="calendar">
-                        <div class="w-full flex justify-center text-xl font-light capitalize" id="month">Avril 2024</div>
-                        <div class="w-full flex justify-center text-2xl" id="day">21</div>
-                        <div class="w-full flex justify-center text-lg" id="dayOfWeek">Dimanche</div>
+                        <div class="w-full flex justify-center text-xl font-light capitalize" id="month"></div>
+                        <div class="w-full flex justify-center text-2xl" id="day"></div>
+                        <div class="w-full flex justify-center text-lg" id="dayOfWeek"></div>
                     </div>
                     <div class="flex justify-end items-end w-36 h-36">
                         <div class="grid grid-cols-2 gap-2">
@@ -264,7 +264,7 @@
     <script>
 
 const data = {
-    labels: {!! json_encode($labels) !!}, 
+    labels: {!! json_encode($labels) !!},
     expeditions: {!! $courriers_exp->pluck('total') !!},
     receptions: {!! $courriers_dest->pluck('total') !!}
 };

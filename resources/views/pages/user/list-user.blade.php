@@ -42,6 +42,7 @@
                     <hr>
                     <div class="  w-full">
                         <div class=" flex justify-end ">
+                        
                             <form action="{{ route('user.create') }}">
                                 <button
                                     class="mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all "><span>Nouveau
@@ -97,6 +98,7 @@
                                                 {{ $users->adresse }}
                                             </td>
                                             <td class="flex justify-center items-center gap-2 py-2 px-4">
+                                                @if (auth()->check() && auth()->user()->role !== 1)
                                                 <form action="{{ route('user.edit', $users->id) }}">
                                                     <button
                                                         class="w-8 h-8 border text-blue-500 border-blue-500  hover:bg-blue-500 hover:shadow-blue-700 hover:shadow-lg hover:text-white  font-bold "><i
@@ -110,7 +112,7 @@
                                                         class="w-8 h-8 border text-red-500 border-red-500   hover:bg-red-500 hover:shadow-red-700 hover:shadow-lg hover:text-white font-bold "onclick="deleteConfirm(event)"><i
                                                             class="bx bx-trash"></i></button>
                                                 </form>
-
+                                                @endif
                                             </td>
 
                                         </tr>
