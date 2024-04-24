@@ -7,7 +7,7 @@
             <h3 class="text-white text-xl font-semibold  flex items-center">
                 <a href={{ route('auth.toMenu') }} class="flex justify-center items-center"><i
                         class="bx bx-chevron-left"></i></a>
-                <p>Colis</p>
+                <p>Archives</p>
             </h3>
 
             @if ($message = Session::get('success'))
@@ -36,7 +36,7 @@
                 <div class="top-card">
                     <div class=" text-white font-bold items-center flex gap-2">
                         <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
-                        <h4 class="text-white my-5">Tous les Colis et Courriers recus par notre postes</h4>
+                        <h4 class="text-white my-5">Tous les Colis et Courriers recus par nos clients</h4>
                     </div>
 
                     <hr>
@@ -124,14 +124,14 @@
                                                     <div class="flex justify-center items-center gap-2">
                                                         <label
                                                             class="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
-                                                            for="switch">
-                                                            <input class="form-checkbox peer sr-only" id="switch" type="checkbox" id="status" name="status" @if ($courriers->status === 1) @checked(true)  @endif   onchange="publishConfirm(event)"/>
+                                                            for="switch" @disabled(true)>
+                                                            <input disabled class="form-checkbox peer sr-only" id="switch" type="checkbox" id="status" name="status" @if ($courriers->status === 1) @checked(true)  @endif   onchange="publishConfirm(event)"/>
                                                             <span
-                                                                class="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"></span>
+                                                                class="absolute inset-0 m-auto h-2 rounded-full bg-green-400"></span>
                                                             <span
-                                                                class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-stone-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0">
+                                                                class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-green-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0">
                                                                 <span
-                                                                    class="absolute inset-0 m-auto size-4 rounded-full bg-stone-300 transition">
+                                                                    class="absolute inset-0 m-auto size-4 rounded-full bg-green-300 transition">
                                                                 </span>
                                                             </span>
                                                         </label>

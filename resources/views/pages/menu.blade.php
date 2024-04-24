@@ -4,6 +4,10 @@
 
 
 @section('content')
+
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 " id="info">
+    {{ view('pages.layouts.info') }}
+</div>
     {{ view('pages.layouts.headers') }}
 
 
@@ -35,7 +39,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('courrier.archive')}} class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-green-500">
                                     <i class="bx bx-archive-in"></i>
@@ -45,7 +49,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href={{route('courrier.expediteur')}} class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50 group-hover:text-green-500">
                                     <i class="bx bxs-truck"></i>
@@ -55,7 +59,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-yellow-600  hover:bg-yellow-400 hover:shadow-yellow-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href="{{route('courrier.destinataire')}}" class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-yellow-500">
                                     <i class="bx bx-check"></i>
@@ -120,14 +124,14 @@
                         </div>
                     </div>
                     <div class="bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg  flex flex-col text-white mx-auto justify-center items-center w-36 h-36" id="calendar">
-                        <div class="w-full flex justify-center text-xl font-light capitalize" id="month">Avril 2024</div>
-                        <div class="w-full flex justify-center text-2xl" id="day">21</div>
-                        <div class="w-full flex justify-center text-lg" id="dayOfWeek">Dimanche</div>
+                        <div class="w-full flex justify-center text-xl font-light capitalize" id="month"></div>
+                        <div class="w-full flex justify-center text-2xl" id="day"></div>
+                        <div class="w-full flex justify-center text-lg" id="dayOfWeek"></div>
                     </div>
                     <div class="flex justify-end items-end w-36 h-36">
                         <div class="grid grid-cols-2 gap-2">
                             <div
-                                class="cursor-pointer  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
+                            id="infoToggle" class="cursor-pointer  z-50  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
                                 <i class="bx bx-info-circle"></i>
                             </div>
                             <div class="relative cursor-pointer  bg-slate-600  hover:bg-slate-400 hover:shadow-slate-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center"
@@ -264,7 +268,7 @@
     <script>
 
 const data = {
-    labels: {!! json_encode($labels) !!}, 
+    labels: {!! json_encode($labels) !!},
     expeditions: {!! $courriers_exp->pluck('total') !!},
     receptions: {!! $courriers_dest->pluck('total') !!}
 };
@@ -307,4 +311,31 @@ const data = {
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, config);
     </script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var infoDiv = document.getElementById("info");
+        var infoToggle = document.getElementById("infoToggle");
+
+        // Fonction pour basculer la classe h-0 de l'élément infoDiv
+        function toggleInfoHeight() {
+            infoDiv.classList.toggle('h-0');
+            infoDiv.classList.toggle('h-96');
+        }
+
+        // Basculer la classe h-0 lorsque vous cliquez sur l'icône infoToggle
+        infoToggle.addEventListener("click", function() {
+            toggleInfoHeight();
+        });
+
+        // Bascule la classe h-0 lorsque vous perdez le focus sur infoDiv
+        infoDiv.addEventListener("blur", function() {
+            infoDiv.classList.add('h-0');
+            infoDiv.classList.toggle('h-96');
+        });
+    });
+</script>
+
 @endsection

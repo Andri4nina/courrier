@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courrier;
 use App\Models\Poste;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,14 +17,15 @@ class UserController extends Controller
         $perPage = 10;
         if (!empty($keyword)) {
             $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
-                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse','users.role')
                 ->where("users.name", "LIKE", "%$keyword%")
                 ->orWhere("users.email", "LIKE", "%$keyword%")
                 ->orderBy('users.id', 'desc')
                 ->paginate($perPage);
         } else {
             $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
-                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse','users.role')
+                ->orderBy('users.id', 'desc')
                 ->paginate($perPage);
         }
 
@@ -94,11 +96,11 @@ class UserController extends Controller
 
     public function destroy(Request $request, $id){
         $user= user::findOrFail($id);
-
+        Courrier::where('user_id', $user->id)->update(['user_id' => 1]);
         $user->delete();
         return redirect('user')->with('success','Utilisateur supprimer!');
     }
 
 
-   
+
 }

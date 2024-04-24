@@ -19,14 +19,14 @@ class AuthController extends Controller
       // Affiche le formulaire de connexion
         public function login()
         {
-            $adminUser = User::where('email', 'admin@gmail.com')->first();
+            $adminUser = User::where('email', 'SuperAdmin@gmail.com')->first();
 
             // Vérifier si l'utilisateur admin existe déjà
             if (!$adminUser) {
                 // Créer l'utilisateur admin s'il n'existe pas
                 User::create([
                     'name' => 'admin',
-                    'email' => 'admin@gmail.com',
+                    'email' => 'SuperAdmin@gmail.com',
                     'password' => Hash::make('admin'),
                     'postes_id' => 1,
                     'role' => 1,

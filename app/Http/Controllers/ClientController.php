@@ -43,9 +43,18 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         $nombreCourriers = Courrier::count();
-        
+        $nombreCourriersexp = Courrier::where('exp_id', $id)->count();
+        $nombreCourriersdest = Courrier::where('dest_id', $id)->count();
+        $resteExp = $nombreCourriers - $nombreCourriersexp;
+        $resteDest = $nombreCourriers - $nombreCourriersdest;
 
-        return view('pages.client.detail-client', ['client' => $client]);
+        return view('pages.client.detail-client', [
+        'client' => $client,
+        'nombreCourriersexp' => $nombreCourriersexp,
+        'nombreCourriersdest' => $nombreCourriersdest,
+        'resteExp' => $resteExp,
+        'resteDest' => $resteDest,
+        ]);
     }
 
     /* ----fin----- */

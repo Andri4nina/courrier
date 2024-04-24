@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Courrier extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         "id",
         "libelle",
@@ -21,5 +21,28 @@ class Courrier extends Model
         "poste_exp_id",
         "poste_dest_id"
     ];
+    public function exp()
+    {
+        return $this->belongsTo(Client::class, 'exp_id');
+    }
 
+    public function dest()
+    {
+        return $this->belongsTo(Client::class, 'dest_id');
+    }
+    public function exp_post()
+    {
+        return $this->belongsTo(Poste::class, 'poste_exp_id');
+    }
+
+    public function dest_post()
+    {
+        return $this->belongsTo(Poste::class, 'poste_dest_id');
+    }
+
+
+    public function facture()
+    {
+        return $this->belongsTo(Facture::class, 'fact_id');
+    }
 }
