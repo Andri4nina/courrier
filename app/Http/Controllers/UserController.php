@@ -16,14 +16,14 @@ class UserController extends Controller
         $perPage = 10;
         if (!empty($keyword)) {
             $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
-                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse','users.role')
                 ->where("users.name", "LIKE", "%$keyword%")
                 ->orWhere("users.email", "LIKE", "%$keyword%")
                 ->orderBy('users.id', 'desc')
                 ->paginate($perPage);
         } else {
             $users = User::join('postes', 'users.postes_id', '=', 'postes.id')
-                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse')
+                ->select('users.id', 'users.name', 'users.email','postes.region','postes.adresse','users.role')
                 ->paginate($perPage);
         }
 
@@ -100,5 +100,5 @@ class UserController extends Controller
     }
 
 
-   
+
 }

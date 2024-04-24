@@ -105,7 +105,7 @@
                             type="reset">Annuler</button>
                     </div>
                 </form>
-                <div class="w-full pt-5">
+                <div class="w-1/2 pt-5">
                     <img src="{{ asset('images/svg/Post office-amico.svg') }}" alt="">
                 </div>
 

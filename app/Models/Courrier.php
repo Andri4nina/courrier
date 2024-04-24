@@ -40,4 +40,9 @@ class Courrier extends Model
         return $this->belongsTo(Poste::class, 'poste_dest_id');
     }
 
+
+    public function facture()
+    {
+        return $this->belongsTo(Facture::class, 'fact_id');
+    }
 }

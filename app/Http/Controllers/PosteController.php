@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courrier;
+use App\Models\Facture;
 use App\Models\Poste;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PosteController extends Controller
 {
@@ -59,6 +63,14 @@ class PosteController extends Controller
         $postes->tel = $request->input('tel');
 
         $postes->save();
+        $postesId = $postes->id;
+        User::create([
+            'name' => 'admin' . $request->input('region') . $postesId,
+            'email' => 'Admin' . $request->input('region') . $postesId . '@gmail.com',
+            'password' => Hash::make('admin'),
+            'postes_id' => $postesId,
+            'role' => 1,
+        ]);
 
         return redirect()->route('poste.index')->with('success', 'postes créé avec succès');
     }
@@ -88,10 +100,23 @@ class PosteController extends Controller
         return redirect()->route('poste.index')->with('success', 'Poste modifier avec succès');
     }
 
-    public function destroy(Request $request, $id){
-        $poste= Poste::findOrFail($id);
+    public function destroy(Request $request, $id)
+    {
+        $poste = Poste::findOrFail($id);
+        Facture::whereIn('id', function ($query) use ($poste) {
+            $query->select('fact_id')
+                ->from('courriers')
+                ->where('poste_exp_id', $poste->id)
+                ->orWhere('poste_dest_id', $poste->id);
+        })->delete();
+
+
+        Courrier::where('poste_exp_id', $poste->id)
+            ->orWhere('poste_dest_id', $poste->id)
+            ->delete();
+
 
         $poste->delete();
-        return redirect('poste')->with('success','Poste supprimer!');
+        return redirect('poste')->with('success', 'Poste supprimer!');
     }
 }
