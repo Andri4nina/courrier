@@ -115,7 +115,9 @@ class PosteController extends Controller
             ->orWhere('poste_dest_id', $poste->id)
             ->delete();
 
-
+        User::where('postes_id', $poste->id)
+            ->delete();
+            
         $poste->delete();
         return redirect('poste')->with('success', 'Poste supprimer!');
     }
