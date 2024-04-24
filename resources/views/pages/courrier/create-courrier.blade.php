@@ -58,8 +58,8 @@
                                         class=" w-full text-right bg-transparent pr-10 outline-none text-white"
                                         name='poids' id='poids' onkeyup ="calculerPrix()" value={{ old('poids') }}>
                                 </div>
-                                <div class="absolute text-white right-1 border-l-2 px-5">
-                                    g
+                                <div class="absolute text-white right-1 border-l-2 px-[14px]">
+                                    Kg
                                 </div>
                             </div>
                             <div

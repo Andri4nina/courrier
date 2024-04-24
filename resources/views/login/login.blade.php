@@ -36,7 +36,7 @@
                     class="text-white bx bx-power-off"></i></button>
         </div>
         <div class="w-60 text-center">
-            <form action={{ route('auth.dologin') }} method="post">
+            <form action={{ route('auth.dologin') }} method="post" autocomplete="off">
                 @csrf
                 @if ($errors->any())
                     <script type="text/javascript">

@@ -4,6 +4,10 @@
 
 
 @section('content')
+
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 " id="info">
+    {{ view('pages.layouts.info') }}
+</div>
     {{ view('pages.layouts.headers') }}
 
 
@@ -127,7 +131,7 @@
                     <div class="flex justify-end items-end w-36 h-36">
                         <div class="grid grid-cols-2 gap-2">
                             <div
-                                class="cursor-pointer  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
+                            id="infoToggle" class="cursor-pointer  z-50  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
                                 <i class="bx bx-info-circle"></i>
                             </div>
                             <div class="relative cursor-pointer  bg-slate-600  hover:bg-slate-400 hover:shadow-slate-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center"
@@ -307,4 +311,31 @@ const data = {
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, config);
     </script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var infoDiv = document.getElementById("info");
+        var infoToggle = document.getElementById("infoToggle");
+
+        // Fonction pour basculer la classe h-0 de l'élément infoDiv
+        function toggleInfoHeight() {
+            infoDiv.classList.toggle('h-0');
+            infoDiv.classList.toggle('h-96');
+        }
+
+        // Basculer la classe h-0 lorsque vous cliquez sur l'icône infoToggle
+        infoToggle.addEventListener("click", function() {
+            toggleInfoHeight();
+        });
+
+        // Bascule la classe h-0 lorsque vous perdez le focus sur infoDiv
+        infoDiv.addEventListener("blur", function() {
+            infoDiv.classList.add('h-0');
+            infoDiv.classList.toggle('h-96');
+        });
+    });
+</script>
+
 @endsection

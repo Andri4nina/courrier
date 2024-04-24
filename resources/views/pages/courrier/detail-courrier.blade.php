@@ -286,7 +286,7 @@
                             <div class="w-2/3 flex justify-end items-center gap-2">
                                 <div class="relative group text-white">
                                     @if ($courriers->status === 0)
-                                        <p>Dans notre engard</p>
+                                        <p>Dans notre hangar</p>
                                     @else
                                         <p>Recupere</p>
                                     @endif
