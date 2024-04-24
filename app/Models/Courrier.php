@@ -30,5 +30,14 @@ class Courrier extends Model
     {
         return $this->belongsTo(Client::class, 'dest_id');
     }
+    public function exp_post()
+    {
+        return $this->belongsTo(Poste::class, 'poste_exp_id');
+    }
+
+    public function dest_post()
+    {
+        return $this->belongsTo(Poste::class, 'poste_dest_id');
+    }
 
 }

@@ -23,7 +23,7 @@
 
                 @foreach ($postes as $poste)
                     <option class="py-2 px-4 border-b-2 border-white h-4" value="{{ $poste->id }}"
-                        {{ old('poste_id') == $poste->id ? 'selected' : '' }}>{{ $poste->region }}
+                        {{ old('postes_id') == $poste->id ? 'selected' : '' }}>{{ $poste->region }}
                     </option>
                 @endforeach
             </select>
@@ -53,7 +53,7 @@
                         })
 
                         @if ($errors->has('name') && $errors->first('name') !== 'admin')
-                            @if ($errors->has('poste_id') && $errors->first('poste_id') === 'Le champ poste_id est obligatoire.')
+                            @if ($errors->has('postes_id') && $errors->first('postes_id') === 'Le champ postes_id est obligatoire.')
                                 Toast.fire({
                                     icon: 'warning',
                                     title: 'Veuillez sélectionner votre région de travail.'
@@ -87,7 +87,7 @@
                         class="text-sm w-full bg-transparent outline-none text-white">
                 </div>
 
-                <input type="hidden" id="poste_id" name="poste_id" value="{{ old('poste_id') }}">
+                <input type="hidden" id="postes_id" name="postes_id" value="{{ old('postes_id') }}">
                 <button
                     class="font-bold text-sm mt-5 bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4  py-2 rounded-sm text-white transition-all">
                     Se Connecter
@@ -101,7 +101,7 @@
     <script>
         document.getElementById('region_select').addEventListener('change', function() {
             var selectedRegionId = this.value;
-            document.getElementById('poste_id').value = selectedRegionId;
+            document.getElementById('postes_id').value = selectedRegionId;
         });
     </script>
 
@@ -113,7 +113,7 @@
     </script>
 
     <script>
-        var hiddenPosteId = document.getElementById('poste_id');
+        var hiddenPosteId = document.getElementById('postes_id');
         var selectRegion = document.getElementById('region_select');
         if (hiddenPosteId.value !== '') {
             for (var option of selectRegion.options) {

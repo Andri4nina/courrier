@@ -24,7 +24,8 @@ class LoginRequest extends FormRequest
         return [
             'name'=>'required',
             'email'=>'required|email',
-            'password'=>'required'
+            'password'=>'required',
+            'postes_id'=>'required',
         ];
     }
 }
