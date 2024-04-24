@@ -299,7 +299,7 @@
                     <div class="w-2/3">
                         <div class="mb-8 text-white font-bold items-center flex">
                             <div class="rounded-sm min-h-5 min-w-1 bg-blue-800"></div>
-                            <div class="ms-2">map</div>
+                            <div class="ms-2">MAP</div>
                         </div>
 
                         <div class="text-white flex items-center">

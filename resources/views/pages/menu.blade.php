@@ -35,7 +35,7 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="#" class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('courrier.archive')}} class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-green-500">
                                     <i class="bx bx-archive-in"></i>

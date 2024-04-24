@@ -282,6 +282,31 @@ class CourrierController extends Controller
 
 
 
+    public function archive(Request $request)
+    {
+        $postesIdForAuthUser = auth()->user()->postes_id;
+
+        $keyword = $request->get('search');
+        $perPage = 10;
+
+        if (!empty($keyword)) {
+            $courriers = Courrier::with( 'exp_post', 'dest_post')
+                ->where('courriers.poste_dest_id', $postesIdForAuthUser)
+                ->where('courriers.status', 1)
+                ->Where('courriers.libelle', 'LIKE', "%$keyword%")
+                ->orderBy('courriers.created_at', 'desc')
+                ->paginate($perPage);
+        } else {
+            $courriers = Courrier::with( 'exp_post', 'dest_post')
+                ->where('courriers.status', 1)
+                ->where('courriers.poste_dest_id', $postesIdForAuthUser)
+                ->orderBy('courriers.created_at', 'desc')
+                ->paginate($perPage);
+        }
+        $count = !is_null($courriers) ? count($courriers) : 0;
+
+        return view('pages.archive.archive', compact('courriers', 'count'));
+    }
 
 
     public function destroy(Request $request, $id){
