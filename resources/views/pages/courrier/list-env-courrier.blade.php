@@ -144,7 +144,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2">
-                                                <form action="">
+                                                <form action="{{ route('fact.generate', $courriers->fact_id) }}">
                                                     <button
                                                         class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
                                                         <i class="bx bx-printer"></i>
