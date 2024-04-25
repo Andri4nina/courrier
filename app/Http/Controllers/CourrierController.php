@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
-use App\Models\Courrier;
-use App\Models\Facture;
 use App\Models\Poste;
+use App\Models\Client;
+use App\Models\Facture;
+use App\Models\Courrier;
 use Illuminate\Http\Request;
 
 class CourrierController extends Controller
@@ -91,9 +91,7 @@ class CourrierController extends Controller
             "libele" => $courriersForm["libelle"]
         ]);
 
-        // dd($expediteur["province"], $destinataire["province"]);
-
-        Courrier::create([
+        $courrier = Courrier::create([
             "libelle" => $courriersForm["libelle"],
             "poids" => $courriersForm["poids"],
             "prix" => $courriersForm["prix"],
