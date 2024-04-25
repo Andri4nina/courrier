@@ -16,8 +16,8 @@ class ComposerStaticInitd44130619fedeb5a8724df6377e36b2c
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
@@ -129,7 +129,6 @@ class ComposerStaticInitd44130619fedeb5a8724df6377e36b2c
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
-            'LaravelDaily\\Invoices\\' => 22,
         ),
         'I' => 
         array (
@@ -438,10 +437,6 @@ class ComposerStaticInitd44130619fedeb5a8724df6377e36b2c
         'Laravel\\Sail\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
-        ),
-        'LaravelDaily\\Invoices\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src',
         ),
         'Illuminate\\Support\\' => 
         array (
@@ -2875,22 +2870,6 @@ class ComposerStaticInitd44130619fedeb5a8724df6377e36b2c
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-        'LaravelDaily\\Invoices\\Classes\\Buyer' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Classes/Buyer.php',
-        'LaravelDaily\\Invoices\\Classes\\InvoiceItem' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Classes/InvoiceItem.php',
-        'LaravelDaily\\Invoices\\Classes\\Party' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Classes/Party.php',
-        'LaravelDaily\\Invoices\\Classes\\Seller' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Classes/Seller.php',
-        'LaravelDaily\\Invoices\\Console\\InstallCommand' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Console/InstallCommand.php',
-        'LaravelDaily\\Invoices\\Console\\UpdateCommand' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Console/UpdateCommand.php',
-        'LaravelDaily\\Invoices\\Contracts\\PartyContract' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Contracts/PartyContract.php',
-        'LaravelDaily\\Invoices\\Facades\\Invoice' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Facades/Invoice.php',
-        'LaravelDaily\\Invoices\\Invoice' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Invoice.php',
-        'LaravelDaily\\Invoices\\InvoiceServiceProvider' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/InvoiceServiceProvider.php',
-        'LaravelDaily\\Invoices\\Services\\PricingService' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Services/PricingService.php',
-        'LaravelDaily\\Invoices\\Traits\\CurrencyFormatter' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Traits/CurrencyFormatter.php',
-        'LaravelDaily\\Invoices\\Traits\\DateFormatter' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Traits/DateFormatter.php',
-        'LaravelDaily\\Invoices\\Traits\\InvoiceHelpers' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Traits/InvoiceHelpers.php',
-        'LaravelDaily\\Invoices\\Traits\\SavesFiles' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Traits/SavesFiles.php',
-        'LaravelDaily\\Invoices\\Traits\\SerialNumberFormatter' => __DIR__ . '/..' . '/laraveldaily/laravel-invoices/src/Traits/SerialNumberFormatter.php',
         'Laravel\\Sail\\Console\\AddCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/AddCommand.php',
         'Laravel\\Sail\\Console\\Concerns\\InteractsWithDockerComposeServices' => __DIR__ . '/..' . '/laravel/sail/src/Console/Concerns/InteractsWithDockerComposeServices.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',

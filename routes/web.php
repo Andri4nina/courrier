@@ -81,4 +81,5 @@ Route::prefix('client')->middleware('auth')->group(function () {
 });
 
 /* Test */
-Route::get("/fact", [FactController::class, 'generate'])->name('fact.generate');
+Route::get("/fact/{idFact}", [FactController::class, 'generate'])->name('fact.generate');
+Route::get("/fact-design", [FactController::class, 'index'])->name('fact.index');
