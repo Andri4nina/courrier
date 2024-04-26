@@ -113,7 +113,13 @@ class AuthController extends Controller
         Session::flush();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         // Redirige vers la page de connexion
-        return redirect()->route('login.login');
+        return redirect()->route('login.login')
+        ->withHeaders([
+            'Cache-Control' => 'no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'Expires' => '0',
+        ]);
     }
 }

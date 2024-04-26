@@ -24,7 +24,7 @@ use App\Http\Controllers\SmsController;
 
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
 Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
-Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('auth.logout');
 
 
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu')->middleware('auth');

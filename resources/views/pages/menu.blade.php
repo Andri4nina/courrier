@@ -4,7 +4,8 @@
 
 
 @section('content')
-    <div class="transition-all absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 " id="info">
+    <div class="transition-all absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 "
+        id="info">
         {{ view('pages.layouts.info') }}
     </div>
     {{ view('pages.layouts.headers') }}
@@ -85,28 +86,33 @@
                                 <div class="z-10 text-center">Nos Clients</div>
                             </a>
                         </div>
-                        <div
-                            class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href={{ route('poste.index') }}
-                                class="relative w-full h-full flex justify-center items-center">
-                                <div
-                                    class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-blue-500">
-                                    <i class="bx bxs-building-house"></i>
-                                </div>
-                                <div class="z-10 text-center">Les Postes</div>
-                            </a>
-                        </div>
-                        <div
-                            class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href={{ route('user.index') }}
-                                class="relative w-full h-full flex justify-center items-center">
-                                <div
-                                    class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-green-500">
-                                    <i class="bx bx-user"></i>
-                                </div>
-                                <div class="z-10 text-center">Utilisateurs</div>
-                            </a>
-                        </div>
+                            @auth
+                                @if (auth()->user()->role == 1)
+
+                            <div
+                                class="overflow-hidden relative bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                                <a href={{ route('poste.index') }}
+                                    class="relative w-full h-full flex justify-center items-center">
+                                    <div
+                                        class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-blue-500">
+                                        <i class="bx bxs-building-house"></i>
+                                    </div>
+                                    <div class="z-10 text-center">Les Postes</div>
+                                </a>
+                            </div>
+                            <div
+                                class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
+                                <a href={{ route('user.index') }}
+                                    class="relative w-full h-full flex justify-center items-center">
+                                    <div
+                                        class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-green-500">
+                                        <i class="bx bx-user"></i>
+                                    </div>
+                                    <div class="z-10 text-center">Utilisateurs</div>
+                                </a>
+                            </div>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -243,6 +249,7 @@
                     const form = document.querySelector('#logout-form');
 
                     form.submit();
+                    
                 }
             })
         }
@@ -274,9 +281,9 @@
 
     <script>
         const data = {
-            labels: {!! json_encode(($labels)) !!},
-            expeditions: {!! json_encode((array_values($courriers_exp_data))) !!},
-            receptions: {!! json_encode((array_values($courriers_dest_data))) !!}
+            labels: {!! json_encode($labels) !!},
+            expeditions: {!! json_encode(array_values($courriers_exp_data)) !!},
+            receptions: {!! json_encode(array_values($courriers_dest_data)) !!}
         };
 
         console.log(data)
