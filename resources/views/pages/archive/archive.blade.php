@@ -139,9 +139,10 @@
                                                 </form>
                                             </td>
                                             <td class="px-4 py-2">
-                                                <form action="">
+                                                <form action="{{ route('fact.generate', $courriers->fact_id) }}">
                                                     <button
-                                                        class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
+                                                    onclick="factConfirm(event)"
+                                                    class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
                                                         <i class="bx bx-printer"></i>
                                                     </button>
                                                 </form>
@@ -213,5 +214,27 @@
                    }
                }
 
+        </script>
+
+
+        <script type="text/javascript">
+            window.factConfirm = function(e) {
+                e.preventDefault();
+                var form = e.target.form;
+                Swal.fire({
+                    title: 'Voulez vous imprimer cette facture ?',
+                    text: "Vous pouvez imprimer plus tard!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1F9B4F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, imprimer!',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
+            }
         </script>
     @endsection

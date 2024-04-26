@@ -9,6 +9,7 @@ use App\Http\Controllers\KimController;
 use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
+use App\Http\Controllers\SmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,10 @@ use App\Http\Controllers\PosteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', [AuthController::class, 'login'])->name('login.login');
 Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
-Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('auth.logout');
 
 
 Route::get('/Menu', [AuthController::class, 'toMenu'])->name('auth.toMenu')->middleware('auth');
@@ -80,6 +82,11 @@ Route::prefix('client')->middleware('auth')->group(function () {
     Route::delete('/{id}', [ClientController::class, 'destroy'])->name('client.destroy');
 });
 
-/* Test */
-Route::get("/fact/{idFact}", [FactController::class, 'generate'])->name('fact.generate');
-Route::get("/fact-design", [FactController::class, 'index'])->name('fact.index');
+/* Facture */
+Route::get("/fact/{idFact}", [FactController::class, 'generate'])->middleware('auth')->name('fact.generate');
+Route::get("/fact-design", [FactController::class, 'index'])->middleware('auth')->name('fact.index');
+
+
+/* SMS notification */
+Route::post("/send-sms-notification/{id}", [SmsController::class, 'sendSms'])->middleware('auth')->name('send-sms-notification');
+

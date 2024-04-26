@@ -248,6 +248,7 @@
                                 <div class="relative group">
                                     <form action="">
                                         <button
+                                        onclick="mailConfirm(event)"
                                             class="w-8 h-8 border text-yellow-500 border-yellow-500  hover:bg-yellow-500 hover:shadow-yellow-700 hover:shadow-lg hover:text-white  font-bold ">
                                             <i class="bx bx-mail-send"></i>
                                         </button>
@@ -266,9 +267,10 @@
                             </div>
                             <div class="w-2/3 flex justify-end items-center gap-2">
                                 <div class="relative group">
-                                    <form action="">
+                                    <form action="{{ route('fact.generate', $courriers->fact_id) }}">
                                         <button
-                                            class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
+                                        onclick="factConfirm(event)"
+                                        class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
                                             <i class="bx bx-printer"></i>
                                         </button>
                                     </form>
@@ -1402,17 +1404,20 @@
         </div>
     </div>
 
-    <script>
+    <script >
         function colorizeRegions() {
             var expRegion = "{{ strtoupper(str_replace([' ', "'", '-'], ['_', '_', '_'], $courriers->exp_post->region)) }}";
         var destRegion = "{{ strtoupper(str_replace([' ', "'", '-'], ['_', '_', '_'], $courriers->dest_post->region)) }}";
 
 
-            if (expRegion === destRegion) {
+            if (expRegion === destRegion){
                 document.getElementById(destRegion.toUpperCase()).classList.toggle('fill-yellow-400');
+                document.getElementById(destRegion.toUpperCase()).classList.toggle('fill-white');
             } else {
             document.getElementById(expRegion.toUpperCase()).classList.toggle('fill-blue-400');
             document.getElementById(destRegion.toUpperCase()).classList.toggle('fill-green-400');
+            document.getElementById(destRegion.toUpperCase()).classList.toggle('fill-white');
+            document.getElementById(expRegion.toUpperCase()).classList.toggle('fill-white');
             }
 
 
@@ -1420,4 +1425,44 @@
         }
     </script>
 
+<script type="text/javascript">
+    window.factConfirm = function(e) {
+        e.preventDefault();
+        var form = e.target.form;
+        Swal.fire({
+            title: 'Voulez vous imprimer cette facture ?',
+            text: "Vous pouvez imprimer plus tard!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1F9B4F',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, imprimer!',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        })
+    }
+</script>
+<script type="text/javascript">
+    window.mailConfirm = function(e) {
+        e.preventDefault();
+        var form = e.target.form;
+        Swal.fire({
+            title: 'Voulez vous notifier par mail nos clients ?',
+            text: "Vous pouvez notifier par mail plus tard!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#1F9B4F',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, imprimer!',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        })
+    }
+</script>
 @endSection

@@ -1,0 +1,14 @@
+composer require twilio/sdk
+
+TWILIO_SID=ACeda68188af86ae7198530997cba1431a
+TWILIO_AUTH_TOKEN=4cd7b6e50570a817113b48646c88f0b3
+TWILIO_PHONE_NUMBER=+12562911806
+
+php artisan make:notification SmsNotification
+
+
+use App\Notifications\SmsNotification;
+
+$user->notify(new SmsNotification);
+
+
