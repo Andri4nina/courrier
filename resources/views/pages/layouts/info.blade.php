@@ -1,5 +1,5 @@
 
-<section class="slider w-full h-[50vh] overflow-hidden">
+<section class="slider w-full h-screen overflow-hidden">
     <ul class="carousel overflow-scroll h-5/6" id="carousel">
         <li  ><img src="{{asset('images/info/Diapositive1.JPG')}}" alt="" ></li>
         <li  ><img src="{{asset('images/info/Diapositive2.JPG')}}" alt="" ></li>

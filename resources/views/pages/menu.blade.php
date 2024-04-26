@@ -4,10 +4,9 @@
 
 
 @section('content')
-
-<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 " id="info">
-    {{ view('pages.layouts.info') }}
-</div>
+    <div class="transition-all absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden w-7/12  h-0 z-50 " id="info">
+        {{ view('pages.layouts.info') }}
+    </div>
     {{ view('pages.layouts.headers') }}
 
 
@@ -39,7 +38,8 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href={{ route('courrier.archive')}} class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('courrier.archive') }}
+                                class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-green-500">
                                     <i class="bx bx-archive-in"></i>
@@ -49,7 +49,8 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-green-600  hover:bg-green-400 hover:shadow-green-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href={{route('courrier.expediteur')}} class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('courrier.expediteur') }}
+                                class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50 group-hover:text-green-500">
                                     <i class="bx bxs-truck"></i>
@@ -59,7 +60,8 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-yellow-600  hover:bg-yellow-400 hover:shadow-yellow-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href="{{route('courrier.destinataire')}}" class="relative w-full h-full flex justify-center items-center">
+                            <a href="{{ route('courrier.destinataire') }}"
+                                class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-yellow-500">
                                     <i class="bx bx-check"></i>
@@ -74,7 +76,8 @@
                         </div>
                         <div
                             class="overflow-hidden relative bg-purple-600  hover:bg-purple-400 hover:shadow-purple-700 hover:shadow-lg   text-white  w-36 h-36 cursor-pointer group">
-                            <a href={{ route('client.index') }} class="relative w-full h-full flex justify-center items-center">
+                            <a href={{ route('client.index') }}
+                                class="relative w-full h-full flex justify-center items-center">
                                 <div
                                     class="text-2xl absolute top-5 left-5 -translate-x-1/2 -translate-y-1/2 text-slate-50  group-hover:text-purple-500">
                                     <i class="bx bx-group"></i>
@@ -123,15 +126,16 @@
 
                         </div>
                     </div>
-                    <div class="bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg  flex flex-col text-white mx-auto justify-center items-center w-36 h-36" id="calendar">
+                    <div class="bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg  flex flex-col text-white mx-auto justify-center items-center w-36 h-36"
+                        id="calendar">
                         <div class="w-full flex justify-center text-xl font-light capitalize" id="month"></div>
                         <div class="w-full flex justify-center text-2xl" id="day"></div>
                         <div class="w-full flex justify-center text-lg" id="dayOfWeek"></div>
                     </div>
                     <div class="flex justify-end items-end w-36 h-36">
                         <div class="grid grid-cols-2 gap-2">
-                            <div
-                            id="infoToggle" class="cursor-pointer  z-50  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
+                            <div id="infoToggle"
+                                class="cursor-pointer  z-50  bg-blue-600  hover:bg-blue-400 hover:shadow-blue-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center">
                                 <i class="bx bx-info-circle"></i>
                             </div>
                             <div class="relative cursor-pointer  bg-slate-600  hover:bg-slate-400 hover:shadow-slate-700 hover:shadow-lg h-6 w-6 rounded-md text-slate-200 flex justify-center items-center"
@@ -140,11 +144,12 @@
                                 <div class=" bg-slate-600 rounded-sm absolute bottom-8 w-[150px] transition-all h-0 overflow-hidden"
                                     id="params">
                                     <ul class="grid">
-                                    @auth
-                                        <a href="{{ route('parametre.index', \Illuminate\Support\Facades\Auth::user()->id) }}">
-                                            <li class="border-b-2 border-white px-4 py-2 hover:bg-slate-800">Parametre</li>
-                                        </a>
-                                    @endauth
+                                        @auth
+                                            <a
+                                                href="{{ route('parametre.index', \Illuminate\Support\Facades\Auth::user()->id) }}">
+                                                <li class="border-b-2 border-white px-4 py-2 hover:bg-slate-800">Parametre</li>
+                                            </a>
+                                        @endauth
 
 
                                         @auth
@@ -171,6 +176,7 @@
     <script>
         var inc = 1000;
         clock();
+
         function clock() {
             const date = new Date();
             const hours = ((date.getHours() + 11) % 12 + 1);
@@ -244,7 +250,6 @@
 
 
     <script>
-
         function getDayOfWeek(date) {
             const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
             return daysOfWeek[date.getDay()];
@@ -259,21 +264,22 @@
         const dayOfWeekElement = document.getElementById('dayOfWeek');
 
 
-        monthElement.textContent = currentDate.toLocaleString('default', { month: 'long' }) + ' ' + currentDate.getFullYear();
+        monthElement.textContent = currentDate.toLocaleString('default', {
+            month: 'long'
+        }) + ' ' + currentDate.getFullYear();
         dayElement.textContent = currentDate.getDate();
         dayOfWeekElement.textContent = getDayOfWeek(currentDate);
     </script>
 
 
     <script>
+        const data = {
+            labels: {!! json_encode(($labels)) !!},
+            expeditions: {!! json_encode((array_values($courriers_exp_data))) !!},
+            receptions: {!! json_encode((array_values($courriers_dest_data))) !!}
+        };
 
-const data = {
-    labels: {!! json_encode($labels) !!},
-    expeditions: {!! $courriers_exp->pluck('total') !!},
-    receptions: {!! $courriers_dest->pluck('total') !!}
-};
-
-
+        console.log(data)
 
         // Configuration du graphique
         const config = {
@@ -281,13 +287,13 @@ const data = {
             data: {
                 labels: data.labels,
                 datasets: [{
-                    label: 'Colis expédiés',
+                    label: 'Courriers expédiés',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
                     data: data.expeditions,
                 }, {
-                    label: 'Colis reçus',
+                    label: 'Courriers reçus',
                     backgroundColor: 'rgba(255, 255, 235, 0.5)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
@@ -302,40 +308,43 @@ const data = {
                     },
                     title: {
                         display: true,
-                        text: ''
+                        text: 'Courriers par mois'
                     }
                 }
             },
         };
 
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const myChart = new Chart(ctx, config);
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, config);
+        });
     </script>
 
 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var infoDiv = document.getElementById("info");
-        var infoToggle = document.getElementById("infoToggle");
 
-        // Fonction pour basculer la classe h-0 de l'élément infoDiv
-        function toggleInfoHeight() {
-            infoDiv.classList.toggle('h-0');
-            infoDiv.classList.toggle('h-96');
-        }
 
-        // Basculer la classe h-0 lorsque vous cliquez sur l'icône infoToggle
-        infoToggle.addEventListener("click", function() {
-            toggleInfoHeight();
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var infoDiv = document.getElementById("info");
+            var infoToggle = document.getElementById("infoToggle");
+
+            // Fonction pour basculer la classe h-0 de l'élément infoDiv
+            function toggleInfoHeight() {
+                infoDiv.classList.toggle('h-0');
+                infoDiv.classList.toggle('h-[100vh]');
+            }
+
+            // Basculer la classe h-0 lorsque vous cliquez sur l'icône infoToggle
+            infoToggle.addEventListener("click", function() {
+                toggleInfoHeight();
+            });
+
+            // Bascule la classe h-0 lorsque vous perdez le focus sur infoDiv
+            infoDiv.addEventListener("blur", function() {
+                infoDiv.classList.add('h-0');
+                infoDiv.classList.toggle('h-96');
+            });
         });
-
-        // Bascule la classe h-0 lorsque vous perdez le focus sur infoDiv
-        infoDiv.addEventListener("blur", function() {
-            infoDiv.classList.add('h-0');
-            infoDiv.classList.toggle('h-96');
-        });
-    });
-</script>
-
+    </script>
 @endsection
