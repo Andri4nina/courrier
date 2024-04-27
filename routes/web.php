@@ -9,6 +9,7 @@ use App\Http\Controllers\KimController;
 use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\SmsController;
 
 /*
@@ -90,3 +91,5 @@ Route::get("/fact-design", [FactController::class, 'index'])->middleware('auth')
 /* SMS notification */
 Route::post("/send-sms-notification/{id}", [SmsController::class, 'sendSms'])->middleware('auth')->name('send-sms-notification');
 
+/* MAIL */
+Route::get("/sendMail", [SendEmailController::class, "sendEmail"]);
