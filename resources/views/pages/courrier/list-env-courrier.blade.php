@@ -108,7 +108,7 @@
                                                             par SMS</p>
                                                     </div>
                                                     <div class="relative group">
-                                                        <form action="">
+                                                        <form action="{{ route('send-mail-notification', $courriers->fact_id) }}">
                                                             <button
                                                             onclick="mailConfirm(event)"
                                                                 class="w-8 h-8 border text-yellow-500 border-yellow-500  hover:bg-yellow-500 hover:shadow-yellow-700 hover:shadow-lg hover:text-white  font-bold ">
@@ -249,7 +249,7 @@
                     showCancelButton: true,
                     confirmButtonColor: '#1F9B4F',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Oui, imprimer!',
+                    confirmButtonText: 'Oui, envoyer!',
                     cancelButtonText: 'Annuler'
                 }).then((result) => {
                     if (result.isConfirmed) {

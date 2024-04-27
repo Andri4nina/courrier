@@ -92,4 +92,4 @@ Route::get("/fact-design", [FactController::class, 'index'])->middleware('auth')
 Route::post("/send-sms-notification/{id}", [SmsController::class, 'sendSms'])->middleware('auth')->name('send-sms-notification');
 
 /* MAIL */
-Route::get("/sendMail", [SendEmailController::class, "sendEmail"]);
+Route::get("/sendMail/{idFact}", [SendEmailController::class, "sendEmail"])->name("send-mail-notification");
