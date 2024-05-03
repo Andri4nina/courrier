@@ -40,7 +40,7 @@ class SmsController extends Controller
                     'body' => 'Vous avez un colis que vous pourrez récupérer dans votre poste. Vous serez informé lorsque le colis arrivera dans votre région.'
                 ]
             ); */
-        
+
             // Redirection avec un message de succès
             return redirect()->back()->with('success', 'SMS envoyé avec succès');
         } catch (\Exception $e) {
