@@ -249,7 +249,7 @@
                     const form = document.querySelector('#logout-form');
 
                     form.submit();
-                    
+
                 }
             })
         }
@@ -286,8 +286,7 @@
             receptions: {!! json_encode(array_values($courriers_dest_data)) !!}
         };
 
-        console.log(data)
-
+    
         // Configuration du graphique
         const config = {
             type: 'bar',

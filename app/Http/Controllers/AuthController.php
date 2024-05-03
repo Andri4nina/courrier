@@ -13,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -105,19 +106,21 @@ class AuthController extends Controller
 
 
     // Gère le processus de déconnexion
-    public function logout(Request $request)
-    {
+    public function logout(Request $request): RedirectResponse
+   {
+       // Déconnecte l'utilisateur et nettoie la session
+       Auth::logout();
+       Session::flush();
+       $request->session()->invalidate();
+       $request->session()->regenerate();
+       $request->session()->regenerateToken();
+       Redirect::back();
+       // Redirige vers la page de connexion
+       return redirect()->route('login.login')->withHeaders([
+        'Cache-Control' => 'no-cache, no-store,max-age=0, must-revalidate',
+        'Pragma' => 'no-cache',
+        'Expires' => '0',
+    ]);
 
-        // Déconnecte l'utilisateur et nettoie la session
-        Auth::logout();
-        Session::flush();
-        $request->session()->invalidate();
-        $request->session()->regenerate();
-        $request->session()->regenerateToken();
-        $request->session()->flush();
-
-        // Redirige vers la page de connexion
-        return redirect()->route('login.login');
-
-    }
+   }
 }
