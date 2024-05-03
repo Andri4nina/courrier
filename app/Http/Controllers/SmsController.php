@@ -17,9 +17,10 @@ class SmsController extends Controller
         $twilioClient = new Client(env('TWILIO_SID'), env('TWILIO_AUTH_TOKEN'));
 
         // Numéro de téléphone de l'expéditeur
-        $telExp = '+261' . substr($courrier->exp->tel, 1);
+        /*      $telExp = '+261' . substr($courrier->exp->tel, 1); */
+        $telExp = "+261326502562";
         // Numéro de téléphone du destinataire
-        $telDest ='+261' . substr($courrier->dest->tel, 1);
+        $telDest = '+261' . substr($courrier->dest->tel, 1);
 
         try {
             // Envoyer le SMS à l'expéditeur
@@ -32,14 +33,14 @@ class SmsController extends Controller
             );
 
             // Envoyer le SMS au destinataire
-         /*    $twilioClient->messages->create(
+            /*    $twilioClient->messages->create(
                 $telDest,
                 [
                     'from' => env('TWILIO_PHONE_NUMBER'),
                     'body' => 'Vous avez un colis que vous pourrez récupérer dans votre poste. Vous serez informé lorsque le colis arrivera dans votre région.'
                 ]
             ); */
-                dd('hello');
+        
             // Redirection avec un message de succès
             return redirect()->back()->with('success', 'SMS envoyé avec succès');
         } catch (\Exception $e) {

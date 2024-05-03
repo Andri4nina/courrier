@@ -101,6 +101,7 @@
                                                 {{ $postes->tel }}
                                             </td>
                                             <td class="flex justify-center items-center gap-2 py-2 px-4">
+
                                                 <form action="{{ route('poste.edit', $postes->id) }}">
                                                     <button
                                                         class="w-8 h-8 border text-blue-500 border-blue-500  hover:bg-blue-500 hover:shadow-blue-700 hover:shadow-lg hover:text-white  font-bold "><i

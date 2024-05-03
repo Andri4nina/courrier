@@ -105,9 +105,9 @@
                                                             par SMS</p>
                                                     </div>
                                                     <div class="relative group">
-                                                        <form action="">
-                                                            <button
-                                                            onclick="mailConfirm(event)"
+                                                        <form
+                                                            action="{{ route('send-mail-notification-return', $courriers->fact_id) }}">
+                                                            <button onclick="mailConfirm(event)"
                                                                 class="w-8 h-8 border text-yellow-500 border-yellow-500  hover:bg-yellow-500 hover:shadow-yellow-700 hover:shadow-lg hover:text-white  font-bold ">
                                                                 <i class="bx bx-mail-send"></i>
                                                             </button>
@@ -119,14 +119,17 @@
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 ">
-                                                <form action="{{ route('courrier.reception') }}" method="POST">
+                                                <form action="{{ route('courrier.reception',$courriers->fact_id) }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name='hidden_id' value="{{ $courriers->id }}">
                                                     <div class="flex justify-center items-center gap-2">
                                                         <label
                                                             class="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
                                                             for="switch">
-                                                            <input class="form-checkbox peer sr-only" id="switch" type="checkbox" id="status" name="status" @if ($courriers->status === 1) @checked(true)  @endif   onchange="publishConfirm(event)"/>
+                                                            <input class="form-checkbox peer sr-only" id="switch"
+                                                                type="checkbox" id="status" name="status"
+                                                                @if ($courriers->status === 1) @checked(true) @endif
+                                                                onchange="publishConfirm(event)" />
                                                             <span
                                                                 class="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"></span>
                                                             <span
@@ -138,12 +141,13 @@
                                                         </label>
                                                     </div>
                                                 </form>
+
+                                             
                                             </td>
                                             <td class="px-4 py-2">
                                                 <form action="{{ route('fact.generate', $courriers->fact_id) }}">
-                                                    <button
-                                                    onclick="factConfirm(event)"
-                                                    class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
+                                                    <button onclick="factConfirm(event)"
+                                                        class="w-8 h-8 border text-slate-500 border-slate-500  hover:bg-slate-500 hover:shadow-slate-700 hover:shadow-lg hover:text-white  font-bold ">
                                                         <i class="bx bx-printer"></i>
                                                     </button>
                                                 </form>
@@ -192,29 +196,29 @@
 
         <script>
             window.publishConfirm = function(e) {
-               var form = e.target.form;
-               var checkbox = form.querySelector('.form-checkbox');
+                var form = e.target.form;
+                var checkbox = form.querySelector('.form-checkbox');
 
-               if (checkbox.checked==true) {
-                       Swal.fire({
-                           title: 'Etes vous sur que le client a bien recu son colis ?',
-                           text:'vous ne pouvez plus revenir en arriere ',
-                           icon: 'warning',
-                           showCancelButton: true,
-                           confirmButtonColor: '#1F9B4F',
-                           cancelButtonColor: '#d33',
-                           confirmButtonText: 'Oui!',
-                           cancelButtonText: 'Annuler'
-                       }).then((result) => {
-                           if (result.isConfirmed) {
-                           form.submit();
-                           }else{
-                               checkbox.checked = false;
-                           }
-                       })
-                   }
-               }
+                if (checkbox.checked == true) {
+                    Swal.fire({
+                        title: 'Etes vous sur que le client a bien recu son colis ?',
+                        text: 'vous ne pouvez plus revenir en arriere ',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#1F9B4F',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Oui!',
+                        cancelButtonText: 'Annuler'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
 
+                        } else {
+                            checkbox.checked = false;
+                        }
+                    })
+                }
+            }
         </script>
 
         <script type="text/javascript">
