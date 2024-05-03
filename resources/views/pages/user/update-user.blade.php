@@ -48,7 +48,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name='name'
-                                        value={{ $user->name }}>
+                                        value="{{ $user->name }}">
                                 </div>
                             </div>
                             <div
@@ -59,7 +59,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class=" w-full text-left bg-transparent pr-3 outline-none text-white" name='Email'
-                                        value={{ $user->email }}>
+                                        value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div
@@ -77,8 +77,8 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-2 my-10 gap-5 w-fit mx-auto  ">
-                        <input type="hidden" name="poste_id" value={{ $user->postes_id }} />
-                        <input type="hidden" name="hidden_id" value={{ $user->id }} />
+                        <input type="hidden" name="poste_id" value="{{ $user->postes_id }}" />
+                        <input type="hidden" name="hidden_id" value="{{ $user->id }}" />
                         <button
                             class="text-white btn-skin2  bg-blue-500  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-md ">Enregistrer</button>
                         <button
