@@ -47,7 +47,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name='nom'
-                                        value={{ $client->nom }}>
+                                        value="{{ $client->nom }}">
                                 </div>
                             </div>
                             <div
@@ -58,7 +58,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class=" w-full text-left bg-transparent pr-3 outline-none text-white" name='prenom'
-                                        value={{ $client->prenom }}>
+                                        value="{{ $client->prenom }}">
                                 </div>
                             </div>
                             <div
@@ -69,7 +69,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="province"
-                                        value={{ $client->province }}>
+                                        value="{{ $client->province }}">
                                 </div>
                             </div>
                             <div
@@ -80,7 +80,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="adresse"
-                                        value={{ $client->adresse }}>
+                                        value="{{ $client->adresse }}">
                                 </div>
                             </div>
                             <div
@@ -91,7 +91,7 @@
                                 <div class="w-2/3">
                                     <input type="email"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="email"
-                                        value={{ $client->email }}>
+                                        value="{{ $client->email }}">
                                 </div>
                             </div>
                             <div
@@ -102,7 +102,7 @@
                                 <div class="w-2/3">
                                     <input type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="tel"
-                                        value={{ $client->tel }}>
+                                        value="{{ $client->tel }}">
                                 </div>
                             </div>
                             <div
@@ -113,7 +113,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="cin"
-                                        value={{ $client->cin }}>
+                                        value="{{ $client->cin }}">
                                 </div>
                             </div>
                         </div>

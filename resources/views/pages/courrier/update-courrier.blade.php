@@ -45,7 +45,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name='libelle'
-                                        value={{ $courriers->libelle }}>
+                                        value="{{ $courriers->libelle }}">
                                 </div>
                             </div>
                             <div
@@ -57,7 +57,7 @@
                                     <input type="text"
                                         class=" w-full text-right bg-transparent pr-10 outline-none text-white"
                                         name='poids' id='poids' onkeyup ="calculerPrix()"
-                                        value={{ $courriers->poids }}>
+                                        value="{{ $courriers->poids }}">
                                 </div>
                                 <div class="absolute text-white right-1 border-l-2 px-[14px]">
                                     Kg
@@ -71,7 +71,7 @@
                                 <div class="w-2/3">
                                     <input type="prix"
                                         class="w-full text-right bg-transparent pr-10 outline-none text-white"
-                                        name="prix" id='prix' value={{ $courriers->prix }}>
+                                        name="prix" id='prix' value="{{ $courriers->prix }}">
                                 </div>
                                 <div class="absolute text-white right-1 border-l-2 px-[14px]">
                                     AR
@@ -85,8 +85,8 @@
                                 <div class="w-2/3">
                                     <input disabled="true" type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none uppercase text-white"
-                                        name="" value={{ $posteUser->region }}>
-                                    <input type="hidden" name="province_exp" value={{ $posteUser->id }}>
+                                        name="" value="{{ $posteUser->region }}">
+                                    <input type="hidden" name="province_exp" value="{{ $posteUser->id }}">
                                 </div>
                             </div>
                             <div
@@ -130,7 +130,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white uppercase"
-                                        name='nom_exp' value={{{ $courriers->exp->nom }}}>
+                                        name='nom_exp' value="{{ $courriers->exp->nom }}">
                                 </div>
                             </div>
                             <div
@@ -141,7 +141,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name='prenom_exp' value={{ $courriers->exp->prenom }}>
+                                        name='prenom_exp' value="{{ $courriers->exp->prenom }}">
                                 </div>
                             </div>
                             <div
@@ -152,7 +152,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="adresse_exp" value={{ $courriers->exp->adresse }}>
+                                        name="adresse_exp" value="{{ $courriers->exp->adresse }}">
                                 </div>
                             </div>
                             <div
@@ -163,7 +163,7 @@
                                 <div class="w-2/3">
                                     <input type="email"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="email_exp" value={{ $courriers->exp->email }}>
+                                        name="email_exp" value="{{ $courriers->exp->email }}">
                                 </div>
                             </div>
                             <div
@@ -174,7 +174,7 @@
                                 <div class="w-2/3">
                                     <input type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="tel_exp"
-                                        value={{ $courriers->exp->tel }}>
+                                        value="{{ $courriers->exp->tel }}">
                                 </div>
                             </div>
                             <div
@@ -185,7 +185,7 @@
                                 <div class="w-2/3">
                                     <input type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white" name="cin_exp"
-                                        value={{ $courriers->exp->cin }}>
+                                        value="{{ $courriers->exp->cin }}">
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white uppercase"
-                                        name='nom_dest' value={{ $courriers->dest->nom }}>
+                                        name='nom_dest' value="{{ $courriers->dest->nom }}">
                                 </div>
                             </div>
                             <div
@@ -215,7 +215,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class=" w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name='prenom_dest' value={{ $courriers->dest->prenom }}>
+                                        name='prenom_dest' value="{{ $courriers->dest->prenom }}">
                                 </div>
                             </div>
                             <div
@@ -226,7 +226,7 @@
                                 <div class="w-2/3">
                                     <input type="text"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="adresse_dest" value={{ $courriers->dest->adresse }}>
+                                        name="adresse_dest" value="{{ $courriers->dest->adresse }}">
                                 </div>
                             </div>
                             <div
@@ -237,7 +237,7 @@
                                 <div class="w-2/3">
                                     <input type="email"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="email_dest" value={{ $courriers->dest->email }}>
+                                        name="email_dest" value="{{ $courriers->dest->email }}">
                                 </div>
                             </div>
                             <div
@@ -248,7 +248,7 @@
                                 <div class="w-2/3">
                                     <input type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="tel_dest" value={{ $courriers->dest->tel }}>
+                                        name="tel_dest" value="{{ $courriers->dest->tel }}">
                                 </div>
                             </div>
                             <div
@@ -259,14 +259,14 @@
                                 <div class="w-2/3">
                                     <input type="tel"
                                         class="w-full text-left bg-transparent pr-3 outline-none text-white"
-                                        name="cin_dest" value={{ $courriers->dest->cin }}>
+                                        name="cin_dest" value="{{ $courriers->dest->cin }}">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="w-full flex justify-end mt-4">
-                    <input type="hidden"  name="hidden_id" value={{ $courriers->id }} />
+                    <input type="hidden"  name="hidden_id" value="{{ $courriers->id }}" />
                     <button
                         class="text-sm text-white btn-skin2  bg-blue-800  hover:bg-blue-600 hover:shadow-blue-700 hover:shadow-lg px-4 py-2 rounded-sm ">Enregistrer</button>
                     <button
