@@ -95,7 +95,7 @@
                                             <td class="px-4 py-2 ">
                                                 <div class="flex justify-center items-center gap-2">
                                                     <div class="relative group">
-                                                        <form action="{{ route('send-sms-notification',$courriers->id) }}" method="POST">
+                                                        <form action="{{ route('send-sms-notification') }}" method="get">
                                                         @csrf
                                                             <button
                                                             onclick="sendConfirm(event)"
@@ -108,7 +108,7 @@
                                                             par SMS</p>
                                                     </div>
                                                     <div class="relative group">
-                                                        <form action="{{ route('send-mail-notification', $courriers->fact_id) }}">
+                                                        <form action="{{ route('send-mail-notification', $courriers->fact_id) }} methode="get'>
                                                             <button
                                                             onclick="mailConfirm(event)"
                                                                 class="w-8 h-8 border text-yellow-500 border-yellow-500  hover:bg-yellow-500 hover:shadow-yellow-700 hover:shadow-lg hover:text-white  font-bold ">
