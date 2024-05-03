@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CourrierController;
 use App\Http\Controllers\FactController;
-use App\Http\Controllers\KimController;
+
 use App\Http\Controllers\ParametreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PosteController;
@@ -91,7 +91,7 @@ Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
 
 
     /* SMS notification */
-    Route::middleware(['auth'])->post("/send-sms-notification/{id}", [SmsController::class, 'sendSms'])->name('send-sms-notification');
+    Route::middleware(['auth'])->get("/send-sms-notification/", [SmsController::class, 'sendSms'])->name('send-sms-notification');
 
     /* MAIL */
     Route::middleware(['auth'])->get("/sendMail/{idFact}", [SendEmailController::class, "sendEmail"])->name("send-mail-notification");
