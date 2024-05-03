@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
 use App\Models\Poste;
 use App\Models\Client;
 use App\Models\Facture;
 use App\Models\Courrier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CourrierController extends Controller
 {
@@ -270,15 +272,53 @@ class CourrierController extends Controller
         return redirect()->route('courrier.expediteur')->with('success', 'Colis modifier avec succès');
     }
 
-    public function reception(Request $request)
+    public function reception(Request $request,$idFact)
     {
         $courrier = Courrier::find($request->hidden_id);
         $courrier->status = 1;
         $courrier->save();
+
+        $courrier = Courrier::where("fact_id", $idFact)->firstOrFail();
+        $expediteur = Client::findOrFail($courrier->exp_id);
+        $destinataire = Client::findOrFail($courrier->dest_id);
+
+        $expediteurEmail = $expediteur->email;
+        $destinataireEmail = $destinataire->email;
+        $expediteurSubject = "Confirmation de récupération du colis";
+        $destinataireSubject = "Confirmation de réception du colis";
+
+        $expediteurMessage = "Bonjour " . $expediteur->prenom . ",\n\nNous vous confirmons que le colis que vous avez envoyé à " . $destinataire->nom . " " . $destinataire->prenom . " a été récupéré .";
+        $destinataireMessage = "Bonjour " . $destinataire->prenom . ",\n\nNous vous confirmons que vous avez bien reçu le colis envoyé par " . $expediteur->nom . " " . $expediteur->prenom . ".";
+
+        Mail::to($expediteurEmail)->send(new SendMail($expediteurMessage, $expediteurSubject));
+        Mail::to($destinataireEmail)->send(new SendMail($destinataireMessage, $destinataireSubject));
+
         return redirect()->route('courrier.destinataire')->with('success', 'Colis recu avec succès');
     }
 
+    public function receptionReturn(Request $request,$idFact)
+    {
+        $courrier = Courrier::find($request->hidden_id);
+        $courrier->status = 0;
+        $courrier->save();
 
+        $courrier = Courrier::where("fact_id", $idFact)->firstOrFail();
+        $expediteur = Client::findOrFail($courrier->exp_id);
+        $destinataire = Client::findOrFail($courrier->dest_id);
+
+        $expediteurEmail = $expediteur->email;
+        $destinataireEmail = $destinataire->email;
+        $expediteurSubject = "Annulation de la confirmation de récupération du colis";
+        $destinataireSubject = "Annulation de la confirmation de réception du colis";
+
+        $expediteurMessage = "Bonjour " . $expediteur->prenom . ",\n\nNous vous informons que le colis que vous avez envoyé à " . $destinataire->nom . " " . $destinataire->prenom . " n'est pas encore recuperer.";
+        $destinataireMessage = "Bonjour " . $destinataire->prenom . ",\n\nNous vous informons l'annulation de la confirmation de reception du colis envoyé par " . $expediteur->nom . " " . $expediteur->prenom . ".";
+
+        Mail::to($expediteurEmail)->send(new SendMail($expediteurMessage, $expediteurSubject));
+        Mail::to($destinataireEmail)->send(new SendMail($destinataireMessage, $destinataireSubject));
+
+        return redirect()->route('courrier.destinataire')->with('success', 'Colis recu avec succès');
+    }
 
     public function archive(Request $request)
     {

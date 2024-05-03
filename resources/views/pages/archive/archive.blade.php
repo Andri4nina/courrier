@@ -118,20 +118,23 @@
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 ">
-                                                <form action="{{ route('courrier.reception') }}" method="POST">
+                                                <form action="{{ route('courrier.receptionReturn',$courriers->fact_id) }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name='hidden_id' value="{{ $courriers->id }}">
                                                     <div class="flex justify-center items-center gap-2">
                                                         <label
                                                             class="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]"
-                                                            for="switch" @disabled(true)>
-                                                            <input disabled class="form-checkbox peer sr-only" id="switch" type="checkbox" id="status" name="status" @if ($courriers->status === 1) @checked(true)  @endif   onchange="publishConfirm(event)"/>
+                                                            for="switch">
+                                                            <input class="form-checkbox peer sr-only" id="switch"
+                                                                type="checkbox" id="status" name="status"
+                                                                @if ($courriers->status === 1) @checked(true) @endif
+                                                                onchange="publishConfirm(event)" />
                                                             <span
-                                                                class="absolute inset-0 m-auto h-2 rounded-full bg-green-400"></span>
+                                                                class="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"></span>
                                                             <span
-                                                                class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-green-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0">
+                                                                class="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-stone-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0">
                                                                 <span
-                                                                    class="absolute inset-0 m-auto size-4 rounded-full bg-green-300 transition">
+                                                                    class="absolute inset-0 m-auto size-4 rounded-full bg-stone-300 transition">
                                                                 </span>
                                                             </span>
                                                         </label>
@@ -194,10 +197,9 @@
                var form = e.target.form;
                var checkbox = form.querySelector('.form-checkbox');
 
-               if (checkbox.checked==true) {
+               if (checkbox.checked==false) {
                        Swal.fire({
-                           title: 'Etes vous sur que le client a bien recu son colis ?',
-                           text:'vous ne pouvez plus revenir en arriere ',
+                           title: "Etes vous sur que le client n'as pas recu son colis ?",
                            icon: 'warning',
                            showCancelButton: true,
                            confirmButtonColor: '#1F9B4F',

@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         // Récupère les données validées du formulaire de connexion
         $authCredentials = $request->validated();
-        /* dd(Auth::attempt($authCredentials)); */
+         /* dd(Auth::attempt($authCredentials)); */
         if (Auth::attempt($authCredentials)) {
             $request->session()->regenerate();
             return redirect()->route('auth.toMenu');
@@ -105,21 +105,19 @@ class AuthController extends Controller
 
 
     // Gère le processus de déconnexion
-    public function logout(Request $request): RedirectResponse
+    public function logout(Request $request)
     {
 
         // Déconnecte l'utilisateur et nettoie la session
         Auth::logout();
         Session::flush();
         $request->session()->invalidate();
+        $request->session()->regenerate();
         $request->session()->regenerateToken();
+        $request->session()->flush();
 
         // Redirige vers la page de connexion
-        return redirect()->route('login.login')
-        ->withHeaders([
-            'Cache-Control' => 'no-cache, no-store, must-revalidate',
-            'Pragma' => 'no-cache',
-            'Expires' => '0',
-        ]);
+        return redirect()->route('login.login');
+
     }
 }
