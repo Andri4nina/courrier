@@ -256,12 +256,14 @@
                             </div>
                             <div class="w-2/3 flex justify-end items-center gap-2">
                                 <div class="relative group">
-                                    <form action="">
-                                        <button
-                                            class="w-8 h-8 border text-purple-500 border-purple-500  hover:bg-purple-500 hover:shadow-purple-700 hover:shadow-lg hover:text-white  font-bold ">
-                                            <i class="bx bx-message-square-dots"></i>
-                                        </button>
-                                    </form>
+                                    <form action="{{ route('send-sms-notification-rappel',['status' => $courriers->status]) }}" method="get">
+                                        @csrf
+                                            <button
+                                            onclick="sendConfirm(event)"
+                                                class="w-8 h-8 border text-purple-500 border-purple-500  hover:bg-purple-500 hover:shadow-purple-700 hover:shadow-lg hover:text-white  font-bold ">
+                                                <i class="bx bx-message-square-dots"></i>
+                                            </button>
+                                        </form>
                                     <p
                                         class="absolute w-20 text-center -top-3 left-1/2 -translate-x-1/2  opacity-0 group-hover:opacity-100 group-hover:-translate-y-1/2 duration-700  text-sm rounded-sm border-purple-500  bg-purple-500 shadow-purple-700 hover:shadow-lg text-white">
                                         par SMS</p>
@@ -1479,6 +1481,27 @@
                 confirmButtonColor: '#1F9B4F',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Oui, imprimer!',
+                cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.sendConfirm = function(e) {
+            e.preventDefault();
+            var form = e.target.form;
+            Swal.fire({
+                title: 'Voulez vous notifier vos clients ?',
+                text: "Vous pouvez notifier plus tard!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#1F9B4F',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Oui, notifier!',
                 cancelButtonText: 'Annuler'
             }).then((result) => {
                 if (result.isConfirmed) {

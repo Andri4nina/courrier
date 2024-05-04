@@ -94,8 +94,9 @@
                                             <td class="px-4 py-2 ">
                                                 <div class="flex justify-center items-center gap-2">
                                                     <div class="relative group">
-                                                        <form action="">
-                                                            <button
+                                                        <form action="{{ route('send-sms-notification-arrived') }}" method="get">
+                                                            @csrf
+                                                            <button onclick="sendConfirm(event)"
                                                                 class="w-8 h-8 border text-purple-500 border-purple-500  hover:bg-purple-500 hover:shadow-purple-700 hover:shadow-lg hover:text-white  font-bold ">
                                                                 <i class="bx bx-message-square-dots"></i>
                                                             </button>
@@ -119,7 +120,8 @@
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 ">
-                                                <form action="{{ route('courrier.reception',$courriers->fact_id) }}" method="POST">
+                                                <form action="{{ route('courrier.reception', $courriers->fact_id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     <input type="hidden" name='hidden_id' value="{{ $courriers->id }}">
                                                     <div class="flex justify-center items-center gap-2">
@@ -142,7 +144,7 @@
                                                     </div>
                                                 </form>
 
-                                             
+
                                             </td>
                                             <td class="px-4 py-2">
                                                 <form action="{{ route('fact.generate', $courriers->fact_id) }}">
@@ -218,6 +220,27 @@
                         }
                     })
                 }
+            }
+        </script>
+
+        <script type="text/javascript">
+            window.sendConfirm = function(e) {
+                e.preventDefault();
+                var form = e.target.form;
+                Swal.fire({
+                    title: 'Voulez vous notifier vos clients ?',
+                    text: "Vous pouvez notifier plus tard!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1F9B4F',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Oui, notifier!',
+                    cancelButtonText: 'Annuler'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                })
             }
         </script>
 
