@@ -9,7 +9,7 @@ use App\Models\Facture;
 use App\Models\Courrier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use Twilio\Rest\Client as TwiCli;
 class CourrierController extends Controller
 {
     public function index()
@@ -293,6 +293,20 @@ class CourrierController extends Controller
         Mail::to($expediteurEmail)->send(new SendMail($expediteurMessage, $expediteurSubject));
         Mail::to($destinataireEmail)->send(new SendMail($destinataireMessage, $destinataireSubject));
 
+        $sid = getenv('TWILIO_SID');
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $sender = getenv('TWILIO_PHONE_NUMBER');
+
+        $twilio = new TwiCli($sid, $token);
+
+
+        $message = $twilio->messages
+            ->create("+261345114323", [
+                "body" => "Confirmation que le colis est recuperer",
+                "from" => $sender
+            ]);
+
+
         return redirect()->route('courrier.destinataire')->with('success', 'Colis recu avec succès');
     }
 
@@ -317,7 +331,21 @@ class CourrierController extends Controller
         Mail::to($expediteurEmail)->send(new SendMail($expediteurMessage, $expediteurSubject));
         Mail::to($destinataireEmail)->send(new SendMail($destinataireMessage, $destinataireSubject));
 
-        return redirect()->route('courrier.destinataire')->with('success', 'Colis recu avec succès');
+        $sid = getenv('TWILIO_SID');
+        $token = getenv("TWILIO_AUTH_TOKEN");
+        $sender = getenv('TWILIO_PHONE_NUMBER');
+
+        $twilio = new TwiCli($sid, $token);
+
+
+        $message = $twilio->messages
+            ->create("+261345114323", [
+                "body" => "Desole,  l'annulation de confirmation que le colis est recuperer",
+                "from" => $sender
+            ]);
+
+
+        return redirect()->route('courrier.destinataire')->with('success', 'Annulation de confirmation');
     }
 
     public function archive(Request $request)

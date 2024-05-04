@@ -92,6 +92,8 @@ Route::post('/login', [AuthController::class, 'doLogin'])->name('auth.dologin');
 
     /* SMS notification */
     Route::middleware(['auth'])->get("/send-sms-notification/", [SmsController::class, 'sendSms'])->name('send-sms-notification');
+    Route::middleware(['auth'])->get("/send-sms-notification-arrived/", [SmsController::class, 'sendSmsArrived'])->name('send-sms-notification-arrived');
+    Route::middleware(['auth'])->get("/send-sms-notification-rappel/{status}", [SendEmailController::class, "sendSMSRappel"])->name("send-sms-notification-rappel");
 
     /* MAIL */
     Route::middleware(['auth'])->get("/sendMail/{idFact}", [SendEmailController::class, "sendEmail"])->name("send-mail-notification");
